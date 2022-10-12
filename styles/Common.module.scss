@@ -2,7 +2,7 @@ $primary: #731e96;
 
 .square {
   width: calc(100% + 4rem);
-  transform: translateX(-2rem);
+  margin-left: -2rem;
   aspect-ratio: 1 / 1;
 }
 
