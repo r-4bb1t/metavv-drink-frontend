@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import styles from "../styles/Layout.module.css";
+import styles from "../styles/Layout.module.scss";
 
 export const Layout = ({
   children,
@@ -12,7 +12,7 @@ export const Layout = ({
   const router = useRouter();
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
+      <main className={`${styles.main} ${hasHeader && styles.header_main}`}>
         {hasHeader && (
           <header className={styles.header}>
             <button
