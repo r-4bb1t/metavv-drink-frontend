@@ -1,21 +1,27 @@
 import styles from "../../styles/IngredientButton.module.scss";
 
 interface Props {
+  id: string;
   label: string;
   description: string;
   checked: boolean;
 }
 
-export function IngredientButtonBig({ label, description, checked }: Props) {
+export function IngredientButtonBig({
+  id,
+  label,
+  description,
+  checked,
+}: Props) {
   return (
     <div className={styles.container_big}>
       <input
         className={styles["visually-hidden"]}
-        type="checkbox"
-        id="ingredient-button-big"
-        checked={checked}
+        type="radio"
+        name="ingredient"
+        id={id}
       />
-      <label htmlFor="ingredient-button-big">
+      <label htmlFor={id}>
         <span className={styles.main}>{label}</span>
         <span className={styles.sub}>{description}</span>
       </label>
