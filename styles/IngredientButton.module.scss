@@ -50,7 +50,6 @@ $primary: #731e96;
 
     span.main {
       width: 82px;
-      margin: 0;
 
       // font-family: "Noto Sans KR";
       font-style: normal;
@@ -63,6 +62,8 @@ $primary: #731e96;
     }
 
     span.sub {
+      width: 181px;
+
       // font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
@@ -73,6 +74,7 @@ $primary: #731e96;
       font-feature-settings: "hist" on;
 
       word-break: keep-all;
+      text-align: left;
     }
   }
 
