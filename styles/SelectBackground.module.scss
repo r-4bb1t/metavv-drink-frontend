@@ -1,0 +1,41 @@
+$primary: #731e96;
+.cardBox {
+  position: relative;
+  width: 125px;
+  margin: 0 0.5rem;
+  flex-shrink: 0;
+  &:hover,
+  &:active {
+    border: 5px solid;
+    border-color: $primary;
+    overflow: visible;
+    & .selected {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      color: white;
+    }
+  }
+}
+
+//왜 원이 잘릴까....
+.selected {
+  position: absolute;
+  top: -12%;
+  left: -12%;
+  display: none;
+  border-radius: 9999px;
+  background-color: $primary;
+  width: 33px;
+  height: 33px;
+  border: none;
+}
+.selected svg {
+  width: 30px;
+  height: 30px;
+}
+
+.cardImg {
+  width: 100%;
+}

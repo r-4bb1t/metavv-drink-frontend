@@ -1,0 +1,90 @@
+$primary: #731e96;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.form section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.form p {
+  margin: 0 0 0.5rem 0;
+}
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 8px;
+  position: relative;
+}
+
+// 보일 때 안 보일때 구분!
+.pencil {
+  position: absolute;
+  top: -30%;
+  right: 25%;
+  padding: 5px;
+  border-radius: 9999px;
+  background-color: $primary;
+  display: hidden;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//이름 글자 스타일!
+.nameBox {
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: none;
+  width: 228px;
+  height: 42px;
+  color: none;
+  border: none;
+  text-align: center;
+  text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 5px;
+
+  &:focus {
+    background: #3b373a;
+    opacity: 0.8;
+    & + .pencil {
+      display: none;
+    }
+  }
+}
+
+.showcaseHeader {
+  background-image: url("");
+  color: #ffffff;
+  text-shadow: 0px 0px 8px #c110ff;
+  letter-spacing: 0.5em;
+}
+.container_slider {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
+.button {
+  width: 100%;
+  height: 50px;
+  border-radius: 9999px;
+  background-color: $primary;
+  height: 50px;
+  color: white;
+  margin: 2rem 0;
+  border: none;
+  font-size: 120%;
+}
