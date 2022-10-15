@@ -1,11 +1,14 @@
 $primary: #731e96;
 
 .container_small {
+  width: 48%;
+  margin-top: 5px;
+  margin-right: 5px;
   label {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 161px;
+    width: 100%;
     height: 40px;
 
     background: #d9d9d9;
