@@ -19,18 +19,16 @@ const Garnish: NextPage = () => {
     (key) => garnishByKey[key]
   );
 
-  const garnishButtons = garnishList.map((garnish) => {
-    return (
-      <IngredientButton.Big
-        key={garnish.name}
-        id={garnish.name}
-        label={garnish.name}
-        description={garnish.description}
-        value={garnish.name}
-        onClick={() => setSelectedGarnish(garnish.name)}
-      />
-    );
-  });
+  const garnishButtons = garnishList.map((garnish) => (
+    <IngredientButton.Big
+      key={garnish.name}
+      id={garnish.name}
+      label={garnish.name}
+      description={garnish.description}
+      value={garnish.name}
+      onChange={() => setSelectedGarnish(garnish.name)}
+    />
+  ));
 
   return (
     <Layout hasHeader>

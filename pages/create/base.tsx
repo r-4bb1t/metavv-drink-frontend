@@ -17,18 +17,16 @@ const Base: NextPage = () => {
 
   const baseList: BaseType[] = [1, 2, 3, 4, 5].map((key) => baseByKey[key]);
 
-  const baseButtons = baseList.map((base) => {
-    return (
-      <IngredientButton.Big
-        key={base.name}
-        id={base.name}
-        label={base.name}
-        description={base.description}
-        value={base.name}
-        onClick={() => setSelectedBase(base.name)}
-      />
-    );
-  });
+  const baseButtons = baseList.map((base) => (
+    <IngredientButton.Big
+      key={base.name}
+      id={base.name}
+      label={base.name}
+      description={base.description}
+      value={base.name}
+      onChange={() => setSelectedBase(base.name)}
+    />
+  ));
 
   return (
     <Layout hasHeader>
