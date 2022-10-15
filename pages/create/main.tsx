@@ -10,25 +10,21 @@ import common from "../../styles/Common.module.scss";
 const Main: NextPage = () => {
   const [selectedMain, setSelectedMain] = useState<string[]>([]);
 
-  const ingredientButtons = ingredients.map((ingredient) => {
-    return (
-      <IngredientButton.Small
-        key={ingredient}
-        id={ingredient}
-        label={ingredient}
-        value={ingredient}
-        onChange={(_, checked: boolean) => {
-          if (checked) {
-            setSelectedMain([...selectedMain, ingredient]);
-          } else {
-            setSelectedMain(
-              selectedMain.filter((value) => value !== ingredient)
-            );
-          }
-        }}
-      />
-    );
-  });
+  const ingredientButtons = ingredients.map((ingredient) => (
+    <IngredientButton.Small
+      key={ingredient}
+      id={ingredient}
+      label={ingredient}
+      value={ingredient}
+      onChange={(_, checked: boolean) => {
+        if (checked) {
+          setSelectedMain([...selectedMain, ingredient]);
+        } else {
+          setSelectedMain(selectedMain.filter((value) => value !== ingredient));
+        }
+      }}
+    />
+  ));
 
   return (
     <Layout hasHeader>
