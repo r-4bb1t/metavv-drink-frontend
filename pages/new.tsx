@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import { Layout } from "../components/Layout";
-import { Progressbar } from "../components/Progressbar";
+import { ProgressBar } from "../components/ProgressBar";
 
 const Home: NextPage = () => {
   return (
     <Layout hasHeader>
-      <div><Progressbar page={'naming'}/></div>
+      <div><ProgressBar page={'material'}/></div>
       <br />
       /new
       <br />

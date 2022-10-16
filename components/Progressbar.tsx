@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import { ReactNode, useState } from "react";
-import styles from "../styles/Progressbar.module.scss";
+import styles from "../styles/ProgressBar.module.scss";
 
-export const Progressbar = ({page}:{page:String}) => {
+export const ProgressBar = ({page}:{page:String}) => {
 
-    const progressbar = [
+    const progressBar = [
         {name: '재료 선택',
         page: 'material'},
         {name: '술잔 선택',
@@ -13,11 +13,11 @@ export const Progressbar = ({page}:{page:String}) => {
         page: 'naming'}
     ]
     return(
-        <div className={styles.progressbar}>
+        <div className={styles.progressBar}>
         
-        {progressbar.map((a, i)=>(
+        {progressBar.map((a, i)=>(
             <>
-                <span className={page === a.page ? styles.selected : styles.progressbar}>{a.name}</span>
+                <span className={page === a.page ? styles.selected : styles.progressBar}>{a.name}</span>
                 <span > {i < 2 ? '>' : null} </span>
             </>
         ))}
