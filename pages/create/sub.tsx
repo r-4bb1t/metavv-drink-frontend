@@ -45,7 +45,7 @@ const Sub: NextPage = () => {
       </div>
       <Link href="/create/garnish">
         <a>
-          <button className={common.button} disabled={selectedSub.length === 0}>
+          <button className={common.button} disabled={selectedSub.length !== 3}>
             다음
           </button>
         </a>

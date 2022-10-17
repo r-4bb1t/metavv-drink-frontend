@@ -47,7 +47,7 @@ const Main: NextPage = () => {
         <a>
           <button
             className={common.button}
-            disabled={selectedMain.length === 0}
+            disabled={selectedMain.length !== 3}
           >
             다음
           </button>
