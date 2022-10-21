@@ -3,16 +3,19 @@ $primary: #731e96;
   position: relative;
   width: 125px;
   margin: 0 0.5rem;
+  background-color: transparent;
+  border: none;
+  display: flex;
   flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
   &:hover,
-  &:active {
+  &:focus {
     border: 5px solid;
     border-color: $primary;
-    overflow: visible;
+    overflow-y: visible;
     & .selected {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
       z-index: 10;
       color: white;
     }
@@ -29,13 +32,12 @@ $primary: #731e96;
   background-color: $primary;
   width: 33px;
   height: 33px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cg mask='url(%23mask0_174_177)'%3E%3Cpath d='M8.76079 16.2973L3.677 11.2135L4.94795 9.94254L8.76079 13.7554L16.9439 5.57227L18.2148 6.84321L8.76079 16.2973Z' fill='white'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 75%;
+  background-position: center;
   border: none;
 }
-.selected svg {
-  width: 30px;
-  height: 30px;
-}
-
 .cardImg {
   width: 100%;
 }
