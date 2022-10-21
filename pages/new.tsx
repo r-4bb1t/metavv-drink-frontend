@@ -5,7 +5,9 @@ import { ProgressBar } from "../components/ProgressBar";
 const Home: NextPage = () => {
   return (
     <Layout hasHeader>
-      <div><ProgressBar page={'material'}/></div>
+      <div>
+        <ProgressBar page={"ingredient"} />
+      </div>
       <br />
       /new
       <br />
