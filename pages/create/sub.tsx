@@ -29,7 +29,7 @@ const Sub: NextPage = () => {
   ));
 
   const handleClickCTA = (e) => {
-    e.preventeDefault();
+    e.preventDefault();
     router.push("/create/garnish");
   };
 
