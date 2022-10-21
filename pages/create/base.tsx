@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
 import { IngredientButton } from "../../components/IngredientButton";
 import {
@@ -12,6 +14,7 @@ import { ProgressBar } from "../../components/ProgressBar";
 import common from "../../styles/Common.module.scss";
 
 const Base: NextPage = () => {
+  const router = useRouter();
   const [selectedBase, setSelectedBase] = useState<string | undefined>(
     undefined
   );
@@ -29,6 +32,11 @@ const Base: NextPage = () => {
     />
   ));
 
+  const handleClickCTA = (e) => {
+    e.preventDefault();
+    router.push("/create/main");
+  };
+
   return (
     <Layout hasHeader>
       <ProgressBar page={"ingredient"} />
@@ -38,13 +46,9 @@ const Base: NextPage = () => {
         style={{ marginBottom: 20 }}
       />
       {baseButtons}
-      <Link href="/create/main">
-        <a>
-          <button className={common.button} disabled={!selectedBase}>
-            다음
-          </button>
-        </a>
-      </Link>
+      <BottomCTA onClick={handleClickCTA} disabled={!selectedBase}>
+        다음
+      </BottomCTA>
     </Layout>
   );
 };

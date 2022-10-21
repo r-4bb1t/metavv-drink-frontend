@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
 import { IngredientButton } from "../../components/IngredientButton";
 import {
@@ -9,9 +10,9 @@ import {
 } from "../../components/IngredientButton/constants";
 import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
-import common from "../../styles/Common.module.scss";
 
 const Garnish: NextPage = () => {
+  const router = useRouter();
   const [selectedGarnish, setSelectedGarnish] = useState<string | undefined>(
     undefined
   );
@@ -31,6 +32,11 @@ const Garnish: NextPage = () => {
     />
   ));
 
+  const handleClickCTA = (e) => {
+    e.preventDefault();
+    router.push("/create/glass");
+  };
+
   return (
     <Layout hasHeader>
       <ProgressBar page={"ingredient"} />
@@ -40,13 +46,9 @@ const Garnish: NextPage = () => {
         style={{ marginBottom: 20 }}
       />
       {garnishButtons}
-      <Link href="/create/glass">
-        <a>
-          <button className={common.button} disabled={!selectedGarnish}>
-            다음
-          </button>
-        </a>
-      </Link>
+      <BottomCTA onClick={handleClickCTA} disabled={!selectedGarnish}>
+        다음
+      </BottomCTA>
     </Layout>
   );
 };

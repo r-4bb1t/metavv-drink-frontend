@@ -1,14 +1,15 @@
 import type { NextPage } from "next";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
 import { IngredientButton } from "../../components/IngredientButton";
 import { ingredients } from "../../components/IngredientButton/constants";
 import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
-import common from "../../styles/Common.module.scss";
 
 const Sub: NextPage = () => {
+  const router = useRouter();
   const [selectedSub, setSelectedSub] = useState<string[]>([]);
 
   const ingredientButtons = ingredients.map((ingredient) => (
@@ -26,6 +27,11 @@ const Sub: NextPage = () => {
       }}
     />
   ));
+
+  const handleClickCTA = (e) => {
+    e.preventeDefault();
+    router.push("/create/garnish");
+  };
 
   return (
     <Layout hasHeader>
@@ -45,13 +51,9 @@ const Sub: NextPage = () => {
       >
         {ingredientButtons}
       </div>
-      <Link href="/create/garnish">
-        <a>
-          <button className={common.button} disabled={selectedSub.length !== 3}>
-            다음
-          </button>
-        </a>
-      </Link>
+      <BottomCTA onClick={handleClickCTA} disabled={selectedSub.length !== 3}>
+        다음
+      </BottomCTA>
     </Layout>
   );
 };
