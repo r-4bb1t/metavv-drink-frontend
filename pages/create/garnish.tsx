@@ -8,6 +8,7 @@ import {
   garnishByKey,
 } from "../../components/IngredientButton/constants";
 import { Layout } from "../../components/Layout";
+import { ProgressBar } from "../../components/ProgressBar";
 import common from "../../styles/Common.module.scss";
 
 const Garnish: NextPage = () => {
@@ -32,6 +33,7 @@ const Garnish: NextPage = () => {
 
   return (
     <Layout hasHeader>
+      <ProgressBar page={"ingredient"} />
       <CreateHeader
         title="4. 가니쉬"
         subTitle="2팀과 앞으로 어떤 사이가 되고 싶어? (1개 선택)"

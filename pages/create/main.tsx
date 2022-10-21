@@ -5,6 +5,7 @@ import { CreateHeader } from "../../components/CreateHeader";
 import { IngredientButton } from "../../components/IngredientButton";
 import { ingredients } from "../../components/IngredientButton/constants";
 import { Layout } from "../../components/Layout";
+import { ProgressBar } from "../../components/ProgressBar";
 import common from "../../styles/Common.module.scss";
 
 const Main: NextPage = () => {
@@ -28,6 +29,7 @@ const Main: NextPage = () => {
 
   return (
     <Layout hasHeader>
+      <ProgressBar page={"ingredient"} />
       <CreateHeader
         title="2. 주재료"
         subTitle="2팀의 첫인상은 어땠어? (3개 선택)"

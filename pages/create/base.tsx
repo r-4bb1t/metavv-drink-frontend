@@ -8,6 +8,7 @@ import {
   baseByKey,
 } from "../../components/IngredientButton/constants";
 import { Layout } from "../../components/Layout";
+import { ProgressBar } from "../../components/ProgressBar";
 import common from "../../styles/Common.module.scss";
 
 const Base: NextPage = () => {
@@ -30,6 +31,7 @@ const Base: NextPage = () => {
 
   return (
     <Layout hasHeader>
+      <ProgressBar page={"ingredient"} />
       <CreateHeader
         title="1. 기주"
         subTitle="2팀과 나의 우정 도수는? (1개 선택)"

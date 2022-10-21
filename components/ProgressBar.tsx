@@ -1,25 +1,23 @@
-import { useRouter } from "next/router";
-import { ReactNode, useState } from "react";
-import styles from "../styles/ProgressBar.module.scss";
+import styles from "../styles/Create.module.scss";
 
-export const ProgressBar = ({ page }: { page: String }) => {
-  const progressBar = [
-    { name: "재료 선택", page: "ingredient" },
-    { name: "술잔 선택", page: "glass" },
-    { name: "이름 짓기", page: "naming" },
-  ];
+interface Props {
+  page: string;
+}
+
+// TODO: 페이지 라우팅 방식 정리한 후에 page prop 대신 router.pathname 사용하기
+
+export const ProgressBar = ({ page }: Props) => {
   return (
     <div className={styles.progressBar}>
-      {progressBar.map((a, i) => (
-        <>
-          <span
-            className={page === a.page ? styles.selected : styles.progressBar}
-          >
-            {a.name}
-          </span>
-          <span> {i < 2 ? ">" : null} </span>
-        </>
-      ))}
+      <span className={page === "ingredient" ? styles.selected : ""}>
+        재료 선택
+      </span>
+      <span>{" > "}</span>
+      <span className={page === "glass" ? styles.selected : ""}>술잔 선택</span>
+      <span>{" > "}</span>
+      <span className={page === "naming" ? styles.selected : ""}>
+        이름 짓기
+      </span>
     </div>
   );
 };
