@@ -5,14 +5,21 @@ import styles from "../styles/Layout.module.scss";
 export const Layout = ({
   children,
   hasHeader = false,
+  background,
 }: {
   children: ReactNode;
   hasHeader?: boolean;
+  background?: string;
 }) => {
   const router = useRouter();
   return (
     <div className={styles.container}>
-      <main className={`${styles.main} ${hasHeader && styles.header_main}`}>
+      <main
+        className={`${styles.main} ${hasHeader && styles.header_main}`}
+        style={{
+          backgroundImage: background ? `url(${background})` : "none",
+        }}
+      >
         {hasHeader && (
           <header className={styles.header}>
             <button

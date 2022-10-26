@@ -1,31 +1,3 @@
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 49px;
-
-  h1 {
-    // font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 22px;
-    padding: 0;
-    margin: 0;
-  }
-
-  span {
-    // font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-
-    color: #c8c8c8;
-  }
-}
-
 .progressBar {
   display: flex;
   justify-content: center;
@@ -44,4 +16,88 @@
     font-size: 16px;
     font-weight: 500;
   }
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  .imagecontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 170px 20px #ad00ff88;
+    }
+    img {
+      position: absolute;
+    }
+  }
+}
+
+.titlecontainer {
+  position: absolute;
+  bottom: -22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+@mixin text-stroke($fill-color, $stroke-color, $stroke-width, $add) {
+  color: $fill-color;
+  text-shadow: -$stroke-width -$stroke-width 0 $stroke-color,
+    $stroke-width -$stroke-width 0 $stroke-color,
+    -$stroke-width $stroke-width 0 $stroke-color,
+    $stroke-width $stroke-width 0 $stroke-color, $add;
+
+  @supports (
+      (-webkit-text-stroke-color: $stroke-color) and
+        (-webkit-text-fill-color: white)
+    )
+    or
+    ((-moz-text-stroke-color: $stroke-color) and (-moz-text-fill-color: white)) {
+    color: unset;
+    text-shadow: $add;
+    -moz-text-fill-color: $fill-color;
+    -webkit-text-fill-color: $fill-color;
+    -moz-text-stroke-color: $stroke-color;
+    -webkit-text-stroke-color: $stroke-color;
+    -moz-text-stroke-width: $stroke-width;
+    -webkit-text-stroke-width: $stroke-width;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: "NanumSquareRound";
+  /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white; */
+  @include text-stroke(transparent, #fff, 1px, 0 0 8px #c110ff);
+}
+
+.subtitle {
+  text-shadow: 0 0 8px #c110ff;
+  font-family: "NanumSquareRound";
+  font-size: 15px;
+  letter-spacing: 7px;
+}
+
+.grid {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 5px solid #6f606f;
+  height: 109px;
 }
