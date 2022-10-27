@@ -9,11 +9,15 @@ import styles from "./styles.module.scss";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Cocktail } from "../../../components/Cocktail";
-import { GameInfo } from "../../../constants/types";
+import { CocktailInfo, GameInfo } from "../../../constants/types";
+import { Recipe } from "../../../components/Recipe";
 
 const Main: NextPage = () => {
   const router = useRouter();
   const [data, setData] = useState<GameInfo>();
+  const [selectedCocktail, setSelectedCocktail] = useState<CocktailInfo | null>(
+    null
+  );
 
   const fetchData = useCallback(async () => {
     try {
@@ -65,31 +69,26 @@ const Main: NextPage = () => {
           {[...Array(Math.ceil((data?.result.length || 1) / 9))].map((_, i) => (
             <SwiperSlide key={i}>
               <div className={styles.grid}>
-                <div className={styles.row}>
-                  {data?.result.slice(i * 3, i * 3 + 3).map((cocktail, i) => (
-                    <Cocktail key={i} cocktail={cocktail} />
-                  ))}
-                </div>
-                <div className={styles.row}>
-                  {data?.result
-                    .slice(i * 3 + 3, i * 3 + 6)
-                    .map((cocktail, i) => (
-                      <Cocktail key={i} cocktail={cocktail} />
-                    ))}
-                </div>
-                <div className={styles.row}>
-                  {data?.result
-                    .slice(i * 3 + 6, i * 3 + 9)
-                    .map((cocktail, i) => (
-                      <Cocktail key={i} cocktail={cocktail} />
-                    ))}
-                </div>
+                {[...Array(3)].map((_, ii) => (
+                  <div className={styles.row} key={ii}>
+                    {data?.result
+                      .slice(ii * 3, ii * 3 + 3)
+                      .map((cocktail, iii) => (
+                        <Cocktail
+                          key={iii}
+                          cocktail={cocktail}
+                          setSelectedCocktail={setSelectedCocktail}
+                        />
+                      ))}
+                  </div>
+                ))}
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
         <BottomCTA onClick={() => {}}>제조 시작!</BottomCTA>
       </div>
+      {selectedCocktail !== null && <Recipe cocktail={selectedCocktail} />}
     </Layout>
   );
 };

@@ -1,17 +1,19 @@
-import { Gradient } from "../../../constants/types";
+import { Gradient } from "../../constants/types";
 
 export const C = ({
   gradient,
   garnish,
+  color = "white",
 }: {
   gradient: keyof typeof Gradient;
   garnish: 4 | 5 | 6 | 7 | 8;
+  color?: "black" | "white";
 }) => {
   return (
     <svg
-      width="107"
+      width="137"
       height="157"
-      viewBox="-12 0 107 157"
+      viewBox="-19 0 119 157"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -27,7 +29,7 @@ export const C = ({
       <path
         d="M83 144.4L83 25.8999C83 19.2725 77.6274 13.8999 71 13.8999L12.5 13.8999C5.87258 13.8999 0.5 19.2725 0.5 25.8999L0.5 144.4C0.5 151.027 5.87258 156.4 12.5 156.4H71C77.6274 156.4 83 151.027 83 144.4Z"
         fill="url(#paint2_linear_559_2160)"
-        stroke="white"
+        stroke={color}
         stroke-miterlimit="10"
       />
       <path
@@ -57,7 +59,7 @@ export const C = ({
       <path
         d="M83 133.28C91.56 133.28 98.56 124.78 98.56 114.4V75.9302C98.56 65.5502 91.56 57.0502 83 57.0502V48.7402C95.65 48.7402 106 59.0902 106 71.7402V118.6C106 131.25 95.65 141.6 83 141.6V133.29V133.28Z"
         fill="url(#paint3_linear_559_2160)"
-        stroke="white"
+        stroke={color}
         stroke-miterlimit="10"
       />
       <path
