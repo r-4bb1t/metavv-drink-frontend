@@ -3,29 +3,13 @@ import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
-import { BottomCTA } from "../../components/BottomCTA";
-import { Layout } from "../../components/Layout";
-import styles from "../../styles/Create.module.scss";
+import { BottomCTA } from "../../../components/BottomCTA";
+import { Layout } from "../../../components/Layout";
+import styles from "./styles.module.scss";
 import "swiper/css";
 import "swiper/css/pagination";
-
-interface GameInfo {
-  name: string;
-  background: number;
-  showcase: number;
-  result: {
-    index: number;
-    drink: number;
-    name: string;
-    base: number;
-    main: number[];
-    sub: number[];
-    garnish: number;
-    glass: number;
-    title: string;
-    comment: string;
-  }[];
-}
+import { Cocktail } from "../../../components/Cocktail";
+import { GameInfo } from "../../../constants/types";
 
 const Main: NextPage = () => {
   const router = useRouter();
@@ -78,23 +62,27 @@ const Main: NextPage = () => {
               '<span class="' + className + '"></span>',
           }}
         >
-          {[...Array(4)].map((_, i) => (
+          {[...Array(Math.ceil((data?.result.length || 1) / 9))].map((_, i) => (
             <SwiperSlide key={i}>
               <div className={styles.grid}>
                 <div className={styles.row}>
-                  {data?.result.map((cocktail) => (
-                    <></>
+                  {data?.result.slice(i * 3, i * 3 + 3).map((cocktail, i) => (
+                    <Cocktail key={i} cocktail={cocktail} />
                   ))}
                 </div>
                 <div className={styles.row}>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                  {data?.result
+                    .slice(i * 3 + 3, i * 3 + 6)
+                    .map((cocktail, i) => (
+                      <Cocktail key={i} cocktail={cocktail} />
+                    ))}
                 </div>
                 <div className={styles.row}>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                  {data?.result
+                    .slice(i * 3 + 6, i * 3 + 9)
+                    .map((cocktail, i) => (
+                      <Cocktail key={i} cocktail={cocktail} />
+                    ))}
                 </div>
               </div>
             </SwiperSlide>

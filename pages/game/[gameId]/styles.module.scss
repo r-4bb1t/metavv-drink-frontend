@@ -80,8 +80,6 @@
   font-size: 32px;
   font-weight: 900;
   font-family: "NanumSquareRound";
-  /* -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: white; */
   @include text-stroke(transparent, #fff, 1px, 0 0 8px #c110ff);
 }
 
@@ -94,13 +92,16 @@
 
 .grid {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 80px;
   margin-bottom: 50px;
 }
 
 .row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  width: 100%;
   border-bottom: 5px solid #6f606f;
-  height: 109px;
+  height: 15vh;
+  div {
+    width: 33.3333%;
+  }
 }
