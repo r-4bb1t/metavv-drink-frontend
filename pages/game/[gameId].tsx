@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import { BottomCTA } from "../../components/BottomCTA";
@@ -9,8 +9,47 @@ import styles from "../../styles/Create.module.scss";
 import "swiper/css";
 import "swiper/css/pagination";
 
+interface GameInfo {
+  name: string;
+  background: number;
+  showcase: number;
+  result: {
+    index: number;
+    drink: number;
+    name: string;
+    base: number;
+    main: number[];
+    sub: number[];
+    garnish: number;
+    glass: number;
+    title: string;
+    comment: string;
+  }[];
+}
+
 const Main: NextPage = () => {
   const router = useRouter();
+  const [data, setData] = useState<GameInfo>();
+
+  const fetchData = useCallback(async () => {
+    try {
+      const result = await (
+        await fetch(
+          `${process.env.NEXT_PUBLIC_API_HOST}/${router.query.gameId}`
+        )
+      ).json();
+
+      setData(result);
+    } catch (e) {
+      console.log(e);
+    }
+  }, [router.query.gameId]);
+
+  useEffect(() => {
+    if (router.query.gameId) {
+      fetchData();
+    }
+  }, [fetchData, router]);
 
   return (
     <Layout
@@ -22,10 +61,10 @@ const Main: NextPage = () => {
       <div className={styles.main}>
         <div className={styles.header}>
           <div className={styles.imagecontainer}>
-            <img src="/assets/showcases/showcase1.png" />
+            <img src="/assets/showcases/showcase (1).png" />
           </div>
           <div className={styles.titlecontainer}>
-            <div className={styles.title}>2팀</div>
+            <div className={styles.title}>{data?.name}</div>
             <div className={styles.subtitle}>showcase</div>
           </div>
         </div>
@@ -43,9 +82,9 @@ const Main: NextPage = () => {
             <SwiperSlide key={i}>
               <div className={styles.grid}>
                 <div className={styles.row}>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                  {data?.result.map((cocktail) => (
+                    <></>
+                  ))}
                 </div>
                 <div className={styles.row}>
                   <div></div>
@@ -61,9 +100,7 @@ const Main: NextPage = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <BottomCTA onClick={() => {}} disabled={true}>
-          제조 시작!
-        </BottomCTA>
+        <BottomCTA onClick={() => {}}>제조 시작!</BottomCTA>
       </div>
     </Layout>
   );
