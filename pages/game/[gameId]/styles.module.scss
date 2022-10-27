@@ -52,12 +52,12 @@
   gap: 8px;
 }
 
-@mixin text-stroke($fill-color, $stroke-color, $stroke-width, $add) {
+@mixin text-stroke($fill-color, $stroke-color, $strokeWidth, $add) {
   color: $fill-color;
-  text-shadow: -$stroke-width -$stroke-width 0 $stroke-color,
-    $stroke-width -$stroke-width 0 $stroke-color,
-    -$stroke-width $stroke-width 0 $stroke-color,
-    $stroke-width $stroke-width 0 $stroke-color, $add;
+  text-shadow: -$strokeWidth -$strokeWidth 0 $stroke-color,
+    $strokeWidth -$strokeWidth 0 $stroke-color,
+    -$strokeWidth $strokeWidth 0 $stroke-color,
+    $strokeWidth $strokeWidth 0 $stroke-color, $add;
 
   @supports (
       (-webkit-text-stroke-color: $stroke-color) and
@@ -71,8 +71,8 @@
     -webkit-text-fill-color: $fill-color;
     -moz-text-stroke-color: $stroke-color;
     -webkit-text-stroke-color: $stroke-color;
-    -moz-text-stroke-width: $stroke-width;
-    -webkit-text-stroke-width: $stroke-width;
+    -moz-text-strokewidth: $strokeWidth;
+    -webkit-text-strokewidth: $strokeWidth;
   }
 }
 

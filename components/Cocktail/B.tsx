@@ -25,25 +25,25 @@ export const B = ({
         d="M71.6898 67.5501C66.4198 51.1501 65.8698 20.8901 65.8698 17.8101C65.8698 14.7301 64.9598 13.8901 63.3798 13.8901H13.3298C11.7598 13.8901 10.8398 14.7301 10.8398 17.8101C10.8398 20.8901 10.2898 51.1501 5.01981 67.5501C-0.250187 83.9501 -3.47019 106.78 10.2898 117.32C24.0498 127.86 20.5398 132.4 15.7098 141.77C10.9398 151.03 5.23981 156.1 37.7598 156.39C37.9598 156.39 38.1498 156.39 38.3498 156.39C38.5498 156.39 38.7398 156.39 38.9398 156.39C71.4598 156.09 65.7698 151.02 60.9898 141.76C56.1598 132.39 52.6498 127.85 66.4098 117.31C80.1698 106.77 76.9498 83.9301 71.6798 67.5401L71.6898 67.5501Z"
         fill="url(#paint1_linear_559_2155)"
         stroke={color}
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
       <path
         opacity="0.1"
         d="M4.66016 110.94L11.2102 103.75L20.3202 113.75L29.2402 103.96L38.0302 113.6L47.0102 103.75L55.9902 113.6L65.0002 103.71L71.8702 111.26"
         stroke="white"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
       <path
         opacity="0.1"
         d="M3.18994 75.0601L20.5199 93.6701L38.2099 74.6701L55.9099 93.6701L73.6699 74.6001"
         stroke="white"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
       <path
         opacity="0.1"
         d="M0.569824 95.7499L2.43982 93.6899L11.5498 103.69L20.4798 93.8899L29.2698 103.54L38.2498 93.6899L47.2198 103.54L56.2298 93.6499L65.3798 103.69L74.5398 93.6299L76.1598 95.4199"
         stroke="white"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
       <path
         opacity="0.2"
@@ -53,20 +53,20 @@ export const B = ({
       <path
         d="M55.7502 45.4501C58.114 45.4501 60.0302 43.5339 60.0302 41.1701C60.0302 38.8064 58.114 36.8901 55.7502 36.8901C53.3864 36.8901 51.4702 38.8064 51.4702 41.1701C51.4702 43.5339 53.3864 45.4501 55.7502 45.4501Z"
         stroke="white"
-        stroke-width="0.75"
-        stroke-miterlimit="10"
+        strokeWidth="0.75"
+        strokeMiterlimit="10"
       />
       <path
         d="M47.1702 46.7301C48.2361 46.7301 49.1002 45.866 49.1002 44.8001C49.1002 43.7342 48.2361 42.8701 47.1702 42.8701C46.1043 42.8701 45.2402 43.7342 45.2402 44.8001C45.2402 45.866 46.1043 46.7301 47.1702 46.7301Z"
         stroke="white"
-        stroke-width="0.75"
-        stroke-miterlimit="10"
+        strokeWidth="0.75"
+        strokeMiterlimit="10"
       />
       <path
         d="M20.0399 41.1701C21.1058 41.1701 21.9699 40.306 21.9699 39.2401C21.9699 38.1741 21.1058 37.3101 20.0399 37.3101C18.974 37.3101 18.1099 38.1741 18.1099 39.2401C18.1099 40.306 18.974 41.1701 20.0399 41.1701Z"
         stroke="white"
-        stroke-width="0.75"
-        stroke-miterlimit="10"
+        strokeWidth="0.75"
+        strokeMiterlimit="10"
       />
       {
         {
@@ -85,7 +85,7 @@ export const B = ({
               <path
                 d="M32.1302 14.7798C31.8302 15.3998 31.4202 15.9898 30.9002 16.5098C28.4202 18.9998 24.4002 18.9998 21.9102 16.5198"
                 stroke="#BA8110"
-                stroke-width="2"
+                strokeWidth="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
               />
@@ -140,7 +140,7 @@ export const B = ({
               <path
                 d="M24.5997 14.0698C26.2297 14.7898 27.4897 16.2698 27.8297 18.1598C28.3797 21.1798 26.3797 24.0698 23.3597 24.6098C20.3397 25.1498 17.4497 23.1598 16.9097 20.1398C16.5697 18.2898 17.1897 16.4898 18.4197 15.2498"
                 stroke="#FFE600"
-                stroke-miterlimit="10"
+                strokeMiterlimit="10"
               />
               <path
                 d="M14.6299 1.6L8.1499 8.64L8.4199 10.17L21.0999 19.24L23.4899 18.84L32.1699 5.88L31.9199 4.31L23.3699 0L14.6299 1.6Z"
@@ -183,8 +183,8 @@ export const B = ({
           y2="30.3498"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color={Gradient[gradient].start} />
-          <stop offset="1" stop-color={Gradient[gradient].end} />
+          <stop stopColor={Gradient[gradient].start} />
+          <stop offset="1" stopColor={Gradient[gradient].end} />
         </linearGradient>
         <linearGradient
           id="paint1_linear_559_2155"
@@ -194,13 +194,13 @@ export const B = ({
           y2="85.1501"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0.1" />
-          <stop offset="0.04" stop-color="white" stop-opacity="0.09" />
-          <stop offset="0.3" stop-color="white" stop-opacity="0.02" />
-          <stop offset="0.5" stop-color="white" stop-opacity="0" />
-          <stop offset="0.7" stop-color="white" stop-opacity="0.02" />
-          <stop offset="0.93" stop-color="white" stop-opacity="0.08" />
-          <stop offset="1" stop-color="white" stop-opacity="0.1" />
+          <stop stopColor="white" stopOpacity="0.1" />
+          <stop offset="0.04" stopColor="white" stopOpacity="0.09" />
+          <stop offset="0.3" stopColor="white" stopOpacity="0.02" />
+          <stop offset="0.5" stopColor="white" stopOpacity="0" />
+          <stop offset="0.7" stopColor="white" stopOpacity="0.02" />
+          <stop offset="0.93" stopColor="white" stopOpacity="0.08" />
+          <stop offset="1" stopColor="white" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_559_2155"
@@ -210,14 +210,14 @@ export const B = ({
           y2="97.0599"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0.95" />
-          <stop offset="0.12" stop-color="white" stop-opacity="0.78" />
-          <stop offset="0.3" stop-color="white" stop-opacity="0.54" />
-          <stop offset="0.47" stop-color="white" stop-opacity="0.35" />
-          <stop offset="0.63" stop-color="white" stop-opacity="0.2" />
-          <stop offset="0.77" stop-color="white" stop-opacity="0.09" />
-          <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0.95" />
+          <stop offset="0.12" stopColor="white" stopOpacity="0.78" />
+          <stop offset="0.3" stopColor="white" stopOpacity="0.54" />
+          <stop offset="0.47" stopColor="white" stopOpacity="0.35" />
+          <stop offset="0.63" stopColor="white" stopOpacity="0.2" />
+          <stop offset="0.77" stopColor="white" stopOpacity="0.09" />
+          <stop offset="0.9" stopColor="white" stopOpacity="0.02" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
