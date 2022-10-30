@@ -57,9 +57,9 @@ const Home: NextPage = () => {
             body: JSON.stringify({
               name,
               base: selectedBase + 1,
-              main: selectedMain.map((m) => m + 1),
-              sub: selectedSub.map((b) => b + 1),
-              garnish: selectedGarnish + 4,
+              main: selectedMain,
+              sub: selectedSub,
+              garnish: selectedGarnish + 5,
               glass: selectedGlass + 1,
               title,
               comment,
