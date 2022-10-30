@@ -13,12 +13,13 @@
 
 .recipe {
   width: 100%;
-  max-width: 350px;
+  aspect-ratio: 5 / 8;
+  overflow-y: auto;
+
   background: url(/assets/recipe.png);
   background-position: center;
   background-size: 100% auto;
   background-repeat: no-repeat;
-  aspect-ratio: 0.6;
 
   padding: 1rem 2rem;
   display: flex;

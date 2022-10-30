@@ -11,6 +11,7 @@ import Sub from "../../../../components/Create/sub";
 import { CreateHeader } from "../../../../components/CreateHeader";
 import { Layout } from "../../../../components/Layout";
 import { ProgressBar } from "../../../../components/ProgressBar";
+import { Recipe } from "../../../../components/Recipe";
 import styles from "./styles.module.scss";
 
 enum STATE {
@@ -36,6 +37,8 @@ const Home: NextPage = () => {
   const [comment, setComment] = useState("");
   const [title, setTitle] = useState("");
 
+  const [isRecipeOpen, setIsRecipeOpen] = useState(-1);
+
   const next = () => setState((s) => s + 1);
   const prev = () => {
     if (state > 0) setState((s) => s - 1);
@@ -57,12 +60,15 @@ const Home: NextPage = () => {
               main: selectedMain.map((m) => m + 1),
               sub: selectedSub.map((b) => b + 1),
               garnish: selectedGarnish + 4,
+              glass: selectedGlass + 1,
               title,
               comment,
             }),
           }
         )
       ).json();
+
+      setIsRecipeOpen(result.result);
     } catch (e) {
       console.log(e);
     }
@@ -118,9 +124,27 @@ const Home: NextPage = () => {
   };
 
   return (
-    <Layout hasHeader back={prev}>
-      {Components[state]}
-    </Layout>
+    <>
+      <Layout hasHeader back={prev}>
+        {Components[state]}
+      </Layout>
+      {isRecipeOpen !== -1 && (
+        <Recipe
+          cocktail={{
+            name,
+            base: selectedBase + 1,
+            main: selectedMain.map((m) => m + 1),
+            sub: selectedSub.map((b) => b + 1),
+            garnish: (selectedGarnish + 4) as 4 | 5 | 6 | 7 | 8,
+            glass: selectedGlass + 1,
+            title,
+            comment,
+            drink: isRecipeOpen,
+          }}
+          close={() => router.push(`/game/${router.query.gameId}`)}
+        />
+      )}
+    </>
   );
 };
 

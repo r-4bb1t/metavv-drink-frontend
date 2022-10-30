@@ -6,7 +6,10 @@
   padding-top: 1rem;
 
   div {
+    display: flex;
+    justify-content: center;
     text-align: center;
     padding: 5px 0;
+    white-space: nowrap;
   }
 }

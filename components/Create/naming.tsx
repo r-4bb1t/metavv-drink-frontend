@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
 import { ProgressBar } from "../../components/ProgressBar";
+import styles from "../../styles/Common.module.scss";
 
 const Naming = ({
   onSubmit,
@@ -22,6 +23,26 @@ const Naming = ({
   return (
     <>
       <ProgressBar page={"naming"} />
+      <div className={styles.ul}>
+        <div>내가 제조한 우정주의 이름!</div>
+        <input
+          placeholder="입력해주세요."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <div>친구에게 한 마디</div>
+        <textarea
+          placeholder="입력해주세요."
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <div>내 이름은?</div>
+        <input
+          placeholder="입력해주세요."
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
       <BottomCTA onClick={() => onSubmit()}>제작 완료!</BottomCTA>
     </>
   );

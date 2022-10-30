@@ -22,3 +22,38 @@ $primary: #731e96;
     cursor: not-allowed;
   }
 }
+
+.ul {
+  display: flex;
+  flex-direction: column;
+  div {
+    display: flex;
+    align-items: center;
+  }
+  div::before {
+    display: inline-block;
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: $primary;
+    margin-right: 5px;
+  }
+  input,
+  textarea {
+    background-color: #323232;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 35px;
+    border-radius: 5px;
+    resize: none;
+    ::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}

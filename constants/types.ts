@@ -1,5 +1,5 @@
 export interface CocktailInfo {
-  index: number;
+  index?: number;
   drink: number;
   name: string;
   base: number;
