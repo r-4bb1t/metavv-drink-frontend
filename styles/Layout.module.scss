@@ -3,6 +3,9 @@
   display: flex;
   justify-content: center;
   background-color: grey;
+  position: relative;
+  height: 100vh;
+  overflow: auto;
 }
 
 .main {
@@ -11,9 +14,9 @@
   max-width: 450px;
   background-color: white;
   min-height: 100vh;
-  overflow: auto;
   background-color: #181417;
   padding: 2rem;
+  background-size: auto 100%;
 }
 
 .header_main {

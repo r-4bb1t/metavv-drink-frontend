@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
 import { Layout } from "../../components/Layout";
@@ -14,7 +14,7 @@ const Glass: NextPage = () => {
     undefined
   );
 
-  const handleClickCTA = (e) => {
+  const handleClickCTA = (e: React.MouseEvent) => {
     e.preventDefault();
     router.push("/create/naming");
   };

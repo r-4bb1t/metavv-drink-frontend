@@ -32,7 +32,7 @@ const Base: NextPage = () => {
     />
   ));
 
-  const handleClickCTA = (e) => {
+  const handleClickCTA = (e: React.MouseEvent) => {
     e.preventDefault();
     router.push("/create/main");
   };

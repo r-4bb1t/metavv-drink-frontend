@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import React, { useState } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
 import { IngredientButton } from "../../components/IngredientButton";
@@ -28,8 +28,8 @@ const Sub: NextPage = () => {
     />
   ));
 
-  const handleClickCTA = (e) => {
-    e.preventeDefault();
+  const handleClickCTA = (e: React.MouseEvent) => {
+    e.preventDefault();
     router.push("/create/garnish");
   };
 

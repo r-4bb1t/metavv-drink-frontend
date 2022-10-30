@@ -1,0 +1,12 @@
+.cocktail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 1rem;
+
+  div {
+    text-align: center;
+    padding: 5px 0;
+  }
+}
