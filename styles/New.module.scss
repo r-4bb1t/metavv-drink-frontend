@@ -15,3 +15,99 @@
     object-fit: contain;
   }
 }
+
+$primary: #731e96;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.form section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.form p {
+  margin: 0 0 0.5rem 0;
+}
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 8px;
+  position: relative;
+}
+
+// 보일 때 안 보일때 구분!
+.pencil {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -30%;
+  right: 25%;
+  border-radius: 9999px;
+  background-color: $primary;
+  display: hidden;
+  border: none;
+  background-image: url("data:image/svg+xml, %3Csvg width='100%' height='100%' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1.66667 13.5417H2.83333L10.0208 6.35417L8.85417 5.1875L1.66667 12.375V13.5417ZM13.5833 5.14583L10.0417 1.64583L11.2083 0.479167C11.5278 0.159722 11.9203 0 12.3858 0C12.8508 0 13.2431 0.159722 13.5625 0.479167L14.7292 1.64583C15.0486 1.96528 15.2153 2.35083 15.2292 2.8025C15.2431 3.25361 15.0903 3.63889 14.7708 3.95833L13.5833 5.14583ZM12.375 6.375L3.54167 15.2083H0V11.6667L8.83333 2.83333L12.375 6.375Z' fill='white'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 75%;
+  background-position: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//이름 글자 스타일!
+.nameBox {
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: none;
+  width: 228px;
+  height: 42px;
+  color: none;
+  border: none;
+  text-align: center;
+  text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 5px;
+
+  &:focus {
+    background: #3b373a;
+    opacity: 0.8;
+    & + .pencil {
+      display: none;
+    }
+  }
+}
+
+.showcaseHeader {
+  color: #ffffff;
+  text-shadow: 0px 0px 8px #c110ff;
+  letter-spacing: 0.5em;
+}
+.container_slider {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: visible;
+  white-space: nowrap;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
+.button {
+  width: 100%;
+  height: 50px;
+  border-radius: 9999px;
+  background-color: $primary;
+  height: 50px;
+  color: white;
+  margin: 2rem 0;
+  border: none;
+  font-size: 120%;
+}
