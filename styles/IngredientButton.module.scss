@@ -40,7 +40,6 @@ $primary: #731e96;
     text-align: center;
     gap: 20px;
     width: 100%;
-    height: 65px;
 
     padding: 20px;
 
@@ -98,4 +97,25 @@ $primary: #731e96;
   clip: rect(0 0 0 0);
   white-space: nowrap;
   -webkit-appearance: none;
+}
+
+.glassInfo {
+  text-align: left;
+}
+
+.glassName {
+  font-weight: 500;
+}
+
+.glassDetail {
+  font-weight: 400;
+}
+
+.glassIcon {
+  width: 25%;
+  flex-shrink: 0;
+}
+
+.selected {
+  filter: invert(1);
 }

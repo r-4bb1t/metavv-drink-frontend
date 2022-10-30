@@ -6,10 +6,12 @@ export const Layout = ({
   children,
   hasHeader = false,
   background,
+  back = () => {},
 }: {
   children: ReactNode;
   hasHeader?: boolean;
   background?: string;
+  back?: Function;
 }) => {
   const router = useRouter();
   return (
@@ -25,7 +27,8 @@ export const Layout = ({
             <button
               className={styles.backbtn}
               onClick={() => {
-                router.back();
+                if (back) back();
+                else router.back();
               }}
             >
               <svg

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { IngredientButtonBig } from "./IngredientButtonBig";
+import { IngredientButtonGlass } from "./IngredientButtonGlass";
 import { IngredientButtonSmall } from "./IngredientButtonSmall";
 
 interface Props {
@@ -12,3 +13,4 @@ export function IngredientButton({ children }: Props) {
 
 IngredientButton.Big = IngredientButtonBig;
 IngredientButton.Small = IngredientButtonSmall;
+IngredientButton.Glass = IngredientButtonGlass;

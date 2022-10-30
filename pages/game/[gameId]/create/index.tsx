@@ -27,6 +27,9 @@ const Home: NextPage = () => {
   const [state, setState] = useState(STATE.base);
 
   const next = () => setState((s) => s + 1);
+  const prev = () => {
+    if (state > 0) setState((s) => s - 1);
+  };
 
   const onSubmit = () => {};
 
@@ -39,7 +42,11 @@ const Home: NextPage = () => {
     [STATE.naming]: <Naming onSubmit={onSubmit} />,
   };
 
-  return <Layout hasHeader>{Components[state]}</Layout>;
+  return (
+    <Layout hasHeader back={prev}>
+      {Components[state]}
+    </Layout>
+  );
 };
 
 export default Home;
