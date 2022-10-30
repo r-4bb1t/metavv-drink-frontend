@@ -1,0 +1,19 @@
+.progressBar {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+  color: #c8c8c8;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+
+  margin-bottom: 29px;
+
+  .selected {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
