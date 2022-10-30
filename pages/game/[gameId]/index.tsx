@@ -86,7 +86,13 @@ const Main: NextPage = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <BottomCTA onClick={() => {}}>제조 시작!</BottomCTA>
+        <BottomCTA
+          onClick={() => {
+            router.push(`/game/${router.query.gameId}/create`);
+          }}
+        >
+          제조 시작!
+        </BottomCTA>
       </div>
       {selectedCocktail !== null && (
         <Recipe

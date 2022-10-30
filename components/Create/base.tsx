@@ -1,19 +1,13 @@
-import type { NextPage } from "next";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { BottomCTA } from "../../components/BottomCTA";
-import { CreateHeader } from "../../components/CreateHeader";
-import { IngredientButton } from "../../components/IngredientButton";
-import {
-  BaseType,
-  baseByKey,
-} from "../../components/IngredientButton/constants";
-import { Layout } from "../../components/Layout";
-import { ProgressBar } from "../../components/ProgressBar";
-import common from "../../styles/Common.module.scss";
+import { BottomCTA } from "../BottomCTA";
+import { CreateHeader } from "../CreateHeader";
+import { IngredientButton } from "../IngredientButton";
+import { BaseType, baseByKey } from "../IngredientButton/constants";
+import { Layout } from "../Layout";
+import { ProgressBar } from "../ProgressBar";
 
-const Base: NextPage = () => {
+const Base = ({ next }: { next: () => void }) => {
   const router = useRouter();
   const [selectedBase, setSelectedBase] = useState<string | undefined>(
     undefined
@@ -34,11 +28,11 @@ const Base: NextPage = () => {
 
   const handleClickCTA = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push("/create/main");
+    next();
   };
 
   return (
-    <Layout hasHeader>
+    <>
       <ProgressBar page={"ingredient"} />
       <CreateHeader
         title="1. 기주"
@@ -49,7 +43,7 @@ const Base: NextPage = () => {
       <BottomCTA onClick={handleClickCTA} disabled={!selectedBase}>
         다음
       </BottomCTA>
-    </Layout>
+    </>
   );
 };
 

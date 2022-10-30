@@ -8,7 +8,7 @@ import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
 import common from "../../styles/Common.module.scss";
 
-const Glass: NextPage = () => {
+const Glass = ({ next }: { next: () => void }) => {
   const router = useRouter();
   const [selectedGlass, setSelectedGlass] = useState<string | undefined>(
     undefined
@@ -16,11 +16,11 @@ const Glass: NextPage = () => {
 
   const handleClickCTA = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push("/create/naming");
+    next();
   };
 
   return (
-    <Layout hasHeader>
+    <>
       <ProgressBar page={"glass"} />
       <CreateHeader
         title="술잔 선택"
@@ -30,7 +30,7 @@ const Glass: NextPage = () => {
       <BottomCTA onClick={handleClickCTA} disabled={!selectedGlass}>
         다음
       </BottomCTA>
-    </Layout>
+    </>
   );
 };
 

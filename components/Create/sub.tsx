@@ -8,7 +8,7 @@ import { ingredients } from "../../components/IngredientButton/constants";
 import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
 
-const Sub: NextPage = () => {
+const Sub = ({ next }: { next: () => void }) => {
   const router = useRouter();
   const [selectedSub, setSelectedSub] = useState<string[]>([]);
 
@@ -30,11 +30,11 @@ const Sub: NextPage = () => {
 
   const handleClickCTA = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push("/create/garnish");
+    next();
   };
 
   return (
-    <Layout hasHeader>
+    <>
       <ProgressBar page={"ingredient"} />
       <CreateHeader
         title="3. 부재료"
@@ -54,7 +54,7 @@ const Sub: NextPage = () => {
       <BottomCTA onClick={handleClickCTA} disabled={selectedSub.length !== 3}>
         다음
       </BottomCTA>
-    </Layout>
+    </>
   );
 };
 

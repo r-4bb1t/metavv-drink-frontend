@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
@@ -8,7 +7,7 @@ import { ingredients } from "../../components/IngredientButton/constants";
 import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
 
-const Main: NextPage = () => {
+const Main = ({ next }: { next: () => void }) => {
   const router = useRouter();
   const [selectedMain, setSelectedMain] = useState<string[]>([]);
 
@@ -30,11 +29,11 @@ const Main: NextPage = () => {
 
   const handleClickCTA = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push("/create/sub");
+    next();
   };
 
   return (
-    <Layout hasHeader>
+    <>
       <ProgressBar page={"ingredient"} />
       <CreateHeader
         title="2. 주재료"
@@ -54,7 +53,7 @@ const Main: NextPage = () => {
       <BottomCTA onClick={handleClickCTA} disabled={selectedMain.length !== 3}>
         다음
       </BottomCTA>
-    </Layout>
+    </>
   );
 };
 

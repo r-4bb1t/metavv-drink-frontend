@@ -11,7 +11,7 @@ import {
 import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
 
-const Garnish: NextPage = () => {
+const Garnish = ({ next }: { next: () => void }) => {
   const router = useRouter();
   const [selectedGarnish, setSelectedGarnish] = useState<string | undefined>(
     undefined
@@ -34,11 +34,11 @@ const Garnish: NextPage = () => {
 
   const handleClickCTA = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push("/create/glass");
+    next();
   };
 
   return (
-    <Layout hasHeader>
+    <>
       <ProgressBar page={"ingredient"} />
       <CreateHeader
         title="4. 가니쉬"
@@ -49,7 +49,7 @@ const Garnish: NextPage = () => {
       <BottomCTA onClick={handleClickCTA} disabled={!selectedGarnish}>
         다음
       </BottomCTA>
-    </Layout>
+    </>
   );
 };
 
