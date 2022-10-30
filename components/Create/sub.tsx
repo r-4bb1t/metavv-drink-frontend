@@ -1,18 +1,23 @@
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
 import { IngredientButton } from "../../components/IngredientButton";
 import { ingredients } from "../../components/IngredientButton/constants";
-import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
 
-const Sub = ({ next }: { next: () => void }) => {
+const Sub = ({
+  next,
+  selectedSub,
+  setSelectedSub,
+}: {
+  next: () => void;
+  selectedSub: number[];
+  setSelectedSub: Dispatch<SetStateAction<number[]>>;
+}) => {
   const router = useRouter();
-  const [selectedSub, setSelectedSub] = useState<string[]>([]);
 
-  const ingredientButtons = ingredients.map((ingredient) => (
+  const ingredientButtons = ingredients.map((ingredient, i) => (
     <IngredientButton.Small
       key={ingredient}
       id={ingredient}
@@ -20,9 +25,9 @@ const Sub = ({ next }: { next: () => void }) => {
       value={ingredient}
       onChange={(_, checked: boolean) => {
         if (checked) {
-          setSelectedSub([...selectedSub, ingredient]);
+          setSelectedSub([...selectedSub, i]);
         } else {
-          setSelectedSub(selectedSub.filter((value) => value !== ingredient));
+          setSelectedSub(selectedSub.filter((value) => value !== i));
         }
       }}
     />

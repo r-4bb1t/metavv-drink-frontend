@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
 import { IngredientButton } from "../../components/IngredientButton";
@@ -8,27 +8,31 @@ import {
   GarnishType,
   garnishByKey,
 } from "../../components/IngredientButton/constants";
-import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
 
-const Garnish = ({ next }: { next: () => void }) => {
+const Garnish = ({
+  next,
+  selectedGarnish,
+  setSelectedGarnish,
+}: {
+  next: () => void;
+  selectedGarnish: number;
+  setSelectedGarnish: Dispatch<SetStateAction<number>>;
+}) => {
   const router = useRouter();
-  const [selectedGarnish, setSelectedGarnish] = useState<string | undefined>(
-    undefined
-  );
 
   const garnishList: GarnishType[] = [1, 2, 3, 4, 5].map(
     (key) => garnishByKey[key]
   );
 
-  const garnishButtons = garnishList.map((garnish) => (
+  const garnishButtons = garnishList.map((garnish, i) => (
     <IngredientButton.Big
       key={garnish.name}
       id={garnish.name}
       label={garnish.name}
       description={garnish.description}
       value={garnish.name}
-      onChange={() => setSelectedGarnish(garnish.name)}
+      onChange={() => setSelectedGarnish(i)}
     />
   ));
 
@@ -46,7 +50,7 @@ const Garnish = ({ next }: { next: () => void }) => {
         style={{ marginBottom: 20 }}
       />
       {garnishButtons}
-      <BottomCTA onClick={handleClickCTA} disabled={!selectedGarnish}>
+      <BottomCTA onClick={handleClickCTA} disabled={selectedGarnish == -1}>
         다음
       </BottomCTA>
     </>

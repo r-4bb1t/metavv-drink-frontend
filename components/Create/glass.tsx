@@ -1,19 +1,20 @@
-import type { NextPage } from "next";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { MouseEvent, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
-import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
-import common from "../../styles/Common.module.scss";
 import { IngredientButton } from "../IngredientButton";
 
-const Glass = ({ next }: { next: () => void }) => {
+const Glass = ({
+  next,
+  selectedGlass,
+  setSelectedGlass,
+}: {
+  next: () => void;
+  selectedGlass: number;
+  setSelectedGlass: Dispatch<SetStateAction<number>>;
+}) => {
   const router = useRouter();
-  const [selectedGlass, setSelectedGlass] = useState<string | undefined>(
-    undefined
-  );
 
   const handleClickCTA = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -24,6 +25,7 @@ const Glass = ({ next }: { next: () => void }) => {
     {
       name: "콜린스 글라스",
       detail: "보통 물잔과 모양이 비슷한 기다란 칵테일 잔",
+      description: "[점점 깊어진 사이]",
       icon: () => (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -66,14 +68,14 @@ const Glass = ({ next }: { next: () => void }) => {
               y2="52.0861"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" stop-opacity="0.95" />
-              <stop offset="0.12" stop-color="white" stop-opacity="0.78" />
-              <stop offset="0.3" stop-color="white" stop-opacity="0.54" />
-              <stop offset="0.47" stop-color="white" stop-opacity="0.35" />
-              <stop offset="0.63" stop-color="white" stop-opacity="0.2" />
-              <stop offset="0.77" stop-color="white" stop-opacity="0.09" />
-              <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-              <stop offset="1" stop-color="white" stop-opacity="0" />
+              <stop stopColor="white" stop-opacity="0.95" />
+              <stop offset="0.12" stopColor="white" stop-opacity="0.78" />
+              <stop offset="0.3" stopColor="white" stop-opacity="0.54" />
+              <stop offset="0.47" stopColor="white" stop-opacity="0.35" />
+              <stop offset="0.63" stopColor="white" stop-opacity="0.2" />
+              <stop offset="0.77" stopColor="white" stop-opacity="0.09" />
+              <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+              <stop offset="1" stopColor="white" stop-opacity="0" />
             </linearGradient>
             <clipPath id="clip0_76_212">
               <rect width="31.2861" height="65" fill="white" />
@@ -86,6 +88,7 @@ const Glass = ({ next }: { next: () => void }) => {
       name: "글렌캐넌 글라스",
       detail:
         "베이스 부분은 넓고 입구 부분은 좁아 증류주 향을 잘 모아주는 것이 특장점",
+      description: "[우여곡절 많았던 사이]",
       icon: () => (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -146,14 +149,14 @@ const Glass = ({ next }: { next: () => void }) => {
               y2="37.8948"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" stop-opacity="0.95" />
-              <stop offset="0.12" stop-color="white" stop-opacity="0.78" />
-              <stop offset="0.3" stop-color="white" stop-opacity="0.54" />
-              <stop offset="0.47" stop-color="white" stop-opacity="0.35" />
-              <stop offset="0.63" stop-color="white" stop-opacity="0.2" />
-              <stop offset="0.77" stop-color="white" stop-opacity="0.09" />
-              <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-              <stop offset="1" stop-color="white" stop-opacity="0" />
+              <stop stopColor="white" stop-opacity="0.95" />
+              <stop offset="0.12" stopColor="white" stop-opacity="0.78" />
+              <stop offset="0.3" stopColor="white" stop-opacity="0.54" />
+              <stop offset="0.47" stopColor="white" stop-opacity="0.35" />
+              <stop offset="0.63" stopColor="white" stop-opacity="0.2" />
+              <stop offset="0.77" stopColor="white" stop-opacity="0.09" />
+              <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+              <stop offset="1" stopColor="white" stop-opacity="0" />
             </linearGradient>
             <clipPath id="clip0_76_229">
               <rect width="34.7467" height="65" fill="white" />
@@ -165,6 +168,7 @@ const Glass = ({ next }: { next: () => void }) => {
     {
       name: "저그",
       detail: "원통 모양의 투박한 맥주잔으로 호프집에서 흔히 볼 수 있는 잔",
+      description: "[처음부터 지금까지 한결같은 사이]",
       icon: () => (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -243,14 +247,14 @@ const Glass = ({ next }: { next: () => void }) => {
               y2="47.5745"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" stop-opacity="0.95" />
-              <stop offset="0.12" stop-color="white" stop-opacity="0.78" />
-              <stop offset="0.3" stop-color="white" stop-opacity="0.54" />
-              <stop offset="0.47" stop-color="white" stop-opacity="0.35" />
-              <stop offset="0.63" stop-color="white" stop-opacity="0.2" />
-              <stop offset="0.77" stop-color="white" stop-opacity="0.09" />
-              <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-              <stop offset="1" stop-color="white" stop-opacity="0" />
+              <stop stopColor="white" stop-opacity="0.95" />
+              <stop offset="0.12" stopColor="white" stop-opacity="0.78" />
+              <stop offset="0.3" stopColor="white" stop-opacity="0.54" />
+              <stop offset="0.47" stopColor="white" stop-opacity="0.35" />
+              <stop offset="0.63" stopColor="white" stop-opacity="0.2" />
+              <stop offset="0.77" stopColor="white" stop-opacity="0.09" />
+              <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+              <stop offset="1" stopColor="white" stop-opacity="0" />
             </linearGradient>
             <clipPath id="clip0_76_243">
               <rect width="48.2404" height="65" fill="white" />
@@ -261,17 +265,29 @@ const Glass = ({ next }: { next: () => void }) => {
     },
   ];
 
-  const glassButtons = glasses.map((glass) => (
-    <IngredientButton.Glass
-      key={glass.name}
-      id={glass.name}
-      icon={glass.icon}
-      label={glass.name}
-      description={glass.detail}
-      value={glass.name}
-      checked={selectedGlass == glass.name}
-      onChange={() => setSelectedGlass(glass.name)}
-    />
+  const glassButtons = glasses.map((glass, i) => (
+    <>
+      <div
+        key={glass.description}
+        style={{
+          fontWeight: 500,
+          marginBottom: "5px",
+          marginTop: "20px",
+        }}
+      >
+        {glass.description}
+      </div>
+      <IngredientButton.Glass
+        key={glass.name}
+        id={glass.name}
+        icon={glass.icon}
+        label={glass.name}
+        description={glass.detail}
+        value={glass.name}
+        checked={selectedGlass == i}
+        onChange={() => setSelectedGlass(i)}
+      />
+    </>
   ));
 
   return (
@@ -283,7 +299,7 @@ const Glass = ({ next }: { next: () => void }) => {
         style={{ marginBottom: 20 }}
       />
       {glassButtons}
-      <BottomCTA onClick={handleClickCTA} disabled={!selectedGlass}>
+      <BottomCTA onClick={handleClickCTA} disabled={selectedGlass == -1}>
         다음
       </BottomCTA>
     </>

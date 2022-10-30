@@ -1,17 +1,23 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
 import { CreateHeader } from "../../components/CreateHeader";
 import { IngredientButton } from "../../components/IngredientButton";
 import { ingredients } from "../../components/IngredientButton/constants";
-import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
 
-const Main = ({ next }: { next: () => void }) => {
+const Main = ({
+  selectedMain,
+  setSelectedMain,
+  next,
+}: {
+  selectedMain: number[];
+  setSelectedMain: Dispatch<SetStateAction<number[]>>;
+  next: () => void;
+}) => {
   const router = useRouter();
-  const [selectedMain, setSelectedMain] = useState<string[]>([]);
 
-  const ingredientButtons = ingredients.map((ingredient) => (
+  const ingredientButtons = ingredients.map((ingredient, i) => (
     <IngredientButton.Small
       key={ingredient}
       id={ingredient}
@@ -19,9 +25,9 @@ const Main = ({ next }: { next: () => void }) => {
       value={ingredient}
       onChange={(_, checked: boolean) => {
         if (checked) {
-          setSelectedMain([...selectedMain, ingredient]);
+          setSelectedMain((s) => [...s, i]);
         } else {
-          setSelectedMain(selectedMain.filter((value) => value !== ingredient));
+          setSelectedMain((s) => s.filter((value) => value !== i));
         }
       }}
     />

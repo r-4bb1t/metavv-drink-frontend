@@ -1,9 +1,24 @@
-import type { NextPage } from "next";
+import { Dispatch, SetStateAction } from "react";
 import { BottomCTA } from "../../components/BottomCTA";
-import { Layout } from "../../components/Layout";
 import { ProgressBar } from "../../components/ProgressBar";
 
-const Naming = ({ onSubmit }: { onSubmit: () => void }) => {
+const Naming = ({
+  onSubmit,
+  name,
+  setName,
+  title,
+  setTitle,
+  comment,
+  setComment,
+}: {
+  onSubmit: () => void;
+  name: string;
+  setName: Dispatch<SetStateAction<string>>;
+  title: string;
+  setTitle: Dispatch<SetStateAction<string>>;
+  comment: string;
+  setComment: Dispatch<SetStateAction<string>>;
+}) => {
   return (
     <>
       <ProgressBar page={"naming"} />

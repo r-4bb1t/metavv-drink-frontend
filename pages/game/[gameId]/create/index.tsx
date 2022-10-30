@@ -26,20 +26,95 @@ const Home: NextPage = () => {
   const router = useRouter();
   const [state, setState] = useState(STATE.base);
 
+  const [selectedBase, setSelectedBase] = useState<number>(-1);
+  const [selectedMain, setSelectedMain] = useState<number[]>([]);
+  const [selectedSub, setSelectedSub] = useState<number[]>([]);
+  const [selectedGarnish, setSelectedGarnish] = useState<number>(-1);
+  const [selectedGlass, setSelectedGlass] = useState<number>(-1);
+
+  const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
+  const [title, setTitle] = useState("");
+
   const next = () => setState((s) => s + 1);
   const prev = () => {
     if (state > 0) setState((s) => s - 1);
   };
 
-  const onSubmit = () => {};
+  const onSubmit = async () => {
+    try {
+      const result = await (
+        await fetch(
+          `${process.env.NEXT_PUBLIC_API_HOST}/game/${router.query.gameId}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              base: selectedBase + 1,
+              main: selectedMain.map((m) => m + 1),
+              sub: selectedSub.map((b) => b + 1),
+              garnish: selectedGarnish + 4,
+              title,
+              comment,
+            }),
+          }
+        )
+      ).json();
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const Components = {
-    [STATE.base]: <Base next={next} />,
-    [STATE.main]: <Main next={next} />,
-    [STATE.sub]: <Sub next={next} />,
-    [STATE.garnish]: <Garnish next={next} />,
-    [STATE.glass]: <Glass next={next} />,
-    [STATE.naming]: <Naming onSubmit={onSubmit} />,
+    [STATE.base]: (
+      <Base
+        next={next}
+        selectedBase={selectedBase}
+        setSelectedBase={setSelectedBase}
+      />
+    ),
+    [STATE.main]: (
+      <Main
+        next={next}
+        selectedMain={selectedMain}
+        setSelectedMain={setSelectedMain}
+      />
+    ),
+    [STATE.sub]: (
+      <Sub
+        next={next}
+        selectedSub={selectedSub}
+        setSelectedSub={setSelectedSub}
+      />
+    ),
+    [STATE.garnish]: (
+      <Garnish
+        next={next}
+        selectedGarnish={selectedGarnish}
+        setSelectedGarnish={setSelectedGarnish}
+      />
+    ),
+    [STATE.glass]: (
+      <Glass
+        next={next}
+        selectedGlass={selectedGlass}
+        setSelectedGlass={setSelectedGlass}
+      />
+    ),
+    [STATE.naming]: (
+      <Naming
+        onSubmit={onSubmit}
+        name={name}
+        setName={setName}
+        comment={comment}
+        setComment={setComment}
+        title={title}
+        setTitle={setTitle}
+      />
+    ),
   };
 
   return (

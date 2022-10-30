@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { BottomCTA } from "../BottomCTA";
 import { CreateHeader } from "../CreateHeader";
 import { IngredientButton } from "../IngredientButton";
@@ -7,22 +7,27 @@ import { BaseType, baseByKey } from "../IngredientButton/constants";
 import { Layout } from "../Layout";
 import { ProgressBar } from "../ProgressBar";
 
-const Base = ({ next }: { next: () => void }) => {
+const Base = ({
+  next,
+  selectedBase,
+  setSelectedBase,
+}: {
+  next: () => void;
+  selectedBase: number;
+  setSelectedBase: Dispatch<SetStateAction<number>>;
+}) => {
   const router = useRouter();
-  const [selectedBase, setSelectedBase] = useState<string | undefined>(
-    undefined
-  );
 
   const baseList: BaseType[] = [1, 2, 3, 4, 5].map((key) => baseByKey[key]);
 
-  const baseButtons = baseList.map((base) => (
+  const baseButtons = baseList.map((base, i) => (
     <IngredientButton.Big
       key={base.name}
       id={base.name}
       label={base.name}
       description={base.description}
       value={base.name}
-      onChange={() => setSelectedBase(base.name)}
+      onChange={() => setSelectedBase(i)}
     />
   ));
 
@@ -40,7 +45,7 @@ const Base = ({ next }: { next: () => void }) => {
         style={{ marginBottom: 20 }}
       />
       {baseButtons}
-      <BottomCTA onClick={handleClickCTA} disabled={!selectedBase}>
+      <BottomCTA onClick={handleClickCTA} disabled={selectedBase == -1}>
         다음
       </BottomCTA>
     </>
