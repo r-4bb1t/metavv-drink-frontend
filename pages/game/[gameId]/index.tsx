@@ -88,7 +88,12 @@ const Main: NextPage = () => {
         </Swiper>
         <BottomCTA onClick={() => {}}>제조 시작!</BottomCTA>
       </div>
-      {selectedCocktail !== null && <Recipe cocktail={selectedCocktail} />}
+      {selectedCocktail !== null && (
+        <Recipe
+          cocktail={selectedCocktail}
+          close={() => setSelectedCocktail(null)}
+        />
+      )}
     </Layout>
   );
 };

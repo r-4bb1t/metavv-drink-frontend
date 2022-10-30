@@ -65,7 +65,7 @@ export const Layout = ({
             <div></div>
           </header>
         )}
-        {children}
+        <div className={styles.content}>{children}</div>
       </main>
     </div>
   );

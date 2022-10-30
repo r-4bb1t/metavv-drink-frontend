@@ -1,20 +1,31 @@
 import { url } from "inspector";
 import { type } from "os";
-import styles from "../styles/SelectBackground.module.scss";
+import { Dispatch, SetStateAction, useState } from "react";
+import styles from "../styles/Select.module.scss";
 
-export const SelectBackground = ({}: {}) => {
-  const images = [
-    "https://i.pinimg.com/236x/8e/fa/49/8efa4957ddcdb5732b70432aa333fd6c.jpg",
-    "https://i.pinimg.com/236x/8e/fa/49/8efa4957ddcdb5732b70432aa333fd6c.jpg",
-    "https://i.pinimg.com/236x/8e/fa/49/8efa4957ddcdb5732b70432aa333fd6c.jpg",
-    "https://i.pinimg.com/236x/8e/fa/49/8efa4957ddcdb5732b70432aa333fd6c.jpg",
-  ];
+export const SelectBackground = ({
+  selectedBackground,
+  setSelectedBackground,
+}: {
+  selectedBackground: number;
+  setSelectedBackground: Dispatch<SetStateAction<number>>;
+}) => {
   return (
     <>
-      {images.map((image) => (
-        <button className={styles.cardBox} type={"button"}>
-          <div className={styles.selected}></div>
-          <img className={styles.cardImg} src={image} alt="배경" />
+      {[...Array(3)].map((_, i) => (
+        <button
+          className={`${styles.cardBox} ${
+            selectedBackground === i ? styles.bordered : ""
+          }`}
+          key={i}
+          onClick={() => setSelectedBackground(i)}
+        >
+          {selectedBackground === i && <div className={styles.selected}></div>}
+          <img
+            className={styles.cardImg}
+            src={`/assets/backgrounds/thumbnail/background (${i + 1}).jpg`}
+            alt="배경"
+          />
         </button>
       ))}
     </>

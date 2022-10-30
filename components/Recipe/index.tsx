@@ -2,13 +2,24 @@ import { CocktailInfo } from "../../constants/types";
 import { A } from "../Cocktail/A";
 import { B } from "../Cocktail/B";
 import { C } from "../Cocktail/C";
+import {
+  baseByKey,
+  garnishByKey,
+  ingredients,
+} from "../IngredientButton/constants";
 import styles from "./styles.module.scss";
 
-export const Recipe = ({ cocktail }: { cocktail: CocktailInfo }) => {
+export const Recipe = ({
+  cocktail,
+  close,
+}: {
+  cocktail: CocktailInfo;
+  close: () => void;
+}) => {
   return (
     <div className={styles.recipecontainer}>
       <div className={styles.recipe}>
-        <div className={styles.backspace}>
+        <div className={styles.backspace} onClick={() => close()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -72,8 +83,33 @@ export const Recipe = ({ cocktail }: { cocktail: CocktailInfo }) => {
           </thead>
           <tbody>
             <tr>
-              <td>보드카</td>
+              <td>{baseByKey[cocktail.base].name}</td>
               <td>150ml</td>
+            </tr>
+            <tr>
+              <td>
+                {cocktail.main.map((m, i) => (
+                  <span key={i}>{ingredients[m]} </span>
+                ))}
+              </td>
+              <td>첫인상 50ml</td>
+            </tr>
+            <tr>
+              <td>
+                {cocktail.sub.map((m, i) => (
+                  <span key={i}>{ingredients[m]} </span>
+                ))}
+              </td>
+              <td>현인상 100ml</td>
+            </tr>
+            <tr>
+              <td>
+                {garnishByKey[cocktail.garnish - 4].name}{" "}
+                <small>
+                  ({garnishByKey[cocktail.garnish - 4].description})
+                </small>
+              </td>
+              <td>1</td>
             </tr>
           </tbody>
           <thead>

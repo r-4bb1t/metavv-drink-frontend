@@ -91,10 +91,11 @@ $primary: #731e96;
 .container_slider {
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: visible;
-  white-space: nowrap;
+  flex-wrap: nowrap;
   width: 100%;
+  padding: 20px 0;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/

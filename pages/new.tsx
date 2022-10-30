@@ -5,7 +5,10 @@ import { Layout } from "../components/Layout";
 import { SelectBackground } from "../components/SelectBackground";
 import styles from "../styles/New.module.scss";
 import { SelectShowcase } from "../components/SelectShowcase";
+import { useState } from "react";
 const New: NextPage = () => {
+  const [selectedBackground, setSelectedBackground] = useState(0);
+  const [selectedShowcase, setSelectedShowcase] = useState(0);
   return (
     <Layout hasHeader>
       <div className={styles.nameContainer}>
@@ -19,25 +22,29 @@ const New: NextPage = () => {
         <div className={styles.pencil}></div>
         <div className={styles.showcaseHeader}>showcase</div>
       </div>
-      <form action="POST" className={styles.form}>
-        <section>
-          <p>배경선택</p>
-          <div className={styles.container_slider}>
-            <SelectBackground></SelectBackground>
-          </div>
-        </section>
-        <section>
-          <p>쇼케이스 선택</p>
-          <div className={styles.container_slider}>
-            <SelectShowcase></SelectShowcase>
-          </div>
-        </section>
-        <Link href="/new">
-          <a>
-            <button className={styles.button}>제작 완료!</button>
-          </a>
-        </Link>
-      </form>
+      <section>
+        <p>배경선택</p>
+        <div className={styles.container_slider}>
+          <SelectBackground
+            selectedBackground={selectedBackground}
+            setSelectedBackground={setSelectedBackground}
+          />
+        </div>
+      </section>
+      <section>
+        <p>쇼케이스 선택</p>
+        <div className={styles.container_slider}>
+          <SelectShowcase
+            selectedShowcase={selectedShowcase}
+            setSelectedShowcase={setSelectedShowcase}
+          />
+        </div>
+      </section>
+      <Link href="/new">
+        <a>
+          <button className={styles.button}>제작 완료!</button>
+        </a>
+      </Link>
     </Layout>
   );
 };

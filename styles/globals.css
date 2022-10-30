@@ -20,16 +20,13 @@ a {
   box-sizing: border-box;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+div {
+  margin: 0;
 }
 
 .swiper-pagination {
@@ -50,4 +47,8 @@ a {
 
 .swiper-pagination-bullet-active {
   opacity: 1;
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
