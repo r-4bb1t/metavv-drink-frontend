@@ -6,9 +6,32 @@ import { SelectBackground } from "../components/SelectBackground";
 import styles from "../styles/New.module.scss";
 import { SelectShowcase } from "../components/SelectShowcase";
 import { useState } from "react";
+import { useRouter } from "next/router";
 const New: NextPage = () => {
+  const [name, setName] = useState("");
   const [selectedBackground, setSelectedBackground] = useState(0);
   const [selectedShowcase, setSelectedShowcase] = useState(0);
+
+  const router = useRouter();
+
+  const onSubmit = async () => {
+    const result = await (
+      await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/new`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          showcase: selectedShowcase + 1,
+          background: selectedBackground + 1,
+        }),
+      })
+    ).json();
+
+    router.push(`/game/${result.id}`);
+  };
+
   return (
     <Layout hasHeader>
       <div className={styles.nameContainer}>
@@ -18,6 +41,8 @@ const New: NextPage = () => {
           placeholder="이름 입력"
           autoFocus
           required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         ></input>
         <div className={styles.pencil}></div>
         <div className={styles.showcaseHeader}>showcase</div>
@@ -40,11 +65,9 @@ const New: NextPage = () => {
           />
         </div>
       </section>
-      <Link href="/new">
-        <a>
-          <button className={styles.button}>제작 완료!</button>
-        </a>
-      </Link>
+      <button className={styles.button} onClick={() => onSubmit()}>
+        제작 완료!
+      </button>
     </Layout>
   );
 };

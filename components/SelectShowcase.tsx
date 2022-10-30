@@ -11,7 +11,7 @@ export const SelectShowcase = ({
 }) => {
   return (
     <>
-      {[...Array(3)].map((_, i) => (
+      {[...Array(6)].map((_, i) => (
         <button
           className={`${styles.cardBox} ${styles.showcase} ${
             selectedShowcase === i ? styles.bordered : ""
@@ -22,7 +22,7 @@ export const SelectShowcase = ({
           {selectedShowcase === i && <div className={styles.selected}></div>}
           <img
             className={styles.cardImg}
-            src={`/assets/showcases/thumbnail/showcase (${i + 1}).png`}
+            src={`/assets/showcases/thumbnail/showcase${i + 1}.png`}
             alt="배경"
           />
         </button>

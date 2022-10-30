@@ -42,14 +42,13 @@ const Main: NextPage = () => {
   return (
     <Layout
       hasHeader
-      background={
-        "https://user-images.githubusercontent.com/52532871/197913898-6d73acc8-6614-40f2-9228-47c11efce0ea.png"
-      }
+      background={`/assets/backgrounds/background${data?.background || 1}.jpg`}
+      back={() => router.push("/")}
     >
       <div className={styles.main}>
         <div className={styles.header}>
           <div className={styles.imagecontainer}>
-            <img src="/assets/showcases/showcase (1).png" />
+            <img src={`/assets/showcases/showcase${data?.showcase || 1}.png`} />
           </div>
           <div className={styles.titlecontainer}>
             <div className={styles.title}>{data?.name}</div>
