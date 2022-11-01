@@ -6,7 +6,7 @@ export const Layout = ({
   children,
   hasHeader = false,
   background,
-  back = () => {},
+  back,
 }: {
   children: ReactNode;
   hasHeader?: boolean;
