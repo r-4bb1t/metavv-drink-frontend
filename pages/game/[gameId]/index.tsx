@@ -71,7 +71,7 @@ const Main: NextPage = () => {
                 {[...Array(3)].map((_, ii) => (
                   <div className={styles.row} key={ii}>
                     {data?.result
-                      .slice(ii * 3, ii * 3 + 3)
+                      .slice(i * 9 + ii * 3, i * 9 + ii * 3 + 3)
                       .map((cocktail, iii) => (
                         <Cocktail
                           key={iii}
