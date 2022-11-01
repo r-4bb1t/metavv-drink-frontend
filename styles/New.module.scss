@@ -159,4 +159,8 @@ $primary: #731e96;
   margin: 2rem 0;
   border: none;
   font-size: 120%;
+  &:disabled {
+    background-color: #464646;
+    cursor: not-allowed;
+  }
 }

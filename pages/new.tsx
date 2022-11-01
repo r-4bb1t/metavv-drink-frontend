@@ -15,10 +15,6 @@ const New: NextPage = () => {
   const router = useRouter();
 
   const onSubmit = async () => {
-    if (name.length === 0) {
-      alert("이름을 1글자 이상 입력해주세요.");
-      return;
-    }
     const result = await (
       await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/new`, {
         method: "POST",
@@ -77,7 +73,11 @@ const New: NextPage = () => {
           />
         </div>
       </section>
-      <button className={styles.button} onClick={() => onSubmit()}>
+      <button
+        className={styles.button}
+        onClick={() => onSubmit()}
+        disabled={name.length === 0}
+      >
         제작 완료!
       </button>
     </Layout>
