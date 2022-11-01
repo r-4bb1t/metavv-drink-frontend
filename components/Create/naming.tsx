@@ -29,18 +29,21 @@ const Naming = ({
           placeholder="입력해주세요."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          maxLength={15}
         />
         <div>친구에게 한 마디</div>
         <textarea
           placeholder="입력해주세요."
           value={comment}
           onChange={(e) => setComment(e.target.value)}
+          maxLength={30}
         />
         <div>내 이름은?</div>
         <input
           placeholder="입력해주세요."
           value={name}
           onChange={(e) => setName(e.target.value)}
+          maxLength={15}
         />
       </div>
       <BottomCTA onClick={() => onSubmit()}>제작 완료!</BottomCTA>
