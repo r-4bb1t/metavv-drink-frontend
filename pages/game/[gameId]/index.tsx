@@ -11,6 +11,12 @@ import "swiper/css/pagination";
 import { Cocktail } from "../../../components/Cocktail";
 import { CocktailInfo, GameInfo } from "../../../constants/types";
 import { Recipe } from "../../../components/Recipe";
+import Create from "../../../components/Create";
+
+enum STATE {
+  start,
+  create,
+}
 
 const Main: NextPage = () => {
   const router = useRouter();
@@ -18,6 +24,7 @@ const Main: NextPage = () => {
   const [selectedCocktail, setSelectedCocktail] = useState<CocktailInfo | null>(
     null
   );
+  const [state, setState] = useState(STATE.start);
 
   const fetchData = useCallback(async () => {
     try {
@@ -39,7 +46,7 @@ const Main: NextPage = () => {
     }
   }, [fetchData, router]);
 
-  return (
+  return state === STATE.start ? (
     <Layout
       hasHeader
       background={`/assets/backgrounds/background${data?.background || 1}.jpg`}
@@ -87,7 +94,7 @@ const Main: NextPage = () => {
         </Swiper>
         <BottomCTA
           onClick={() => {
-            router.push(`/game/${router.query.gameId}/create`);
+            setState(STATE.create);
           }}
         >
           제조 시작!
@@ -100,6 +107,11 @@ const Main: NextPage = () => {
         />
       )}
     </Layout>
+  ) : (
+    <Create
+      gameId={router.query.gameId as string}
+      back={() => setState(STATE.start)}
+    />
   );
 };
 

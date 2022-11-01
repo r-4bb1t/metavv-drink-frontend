@@ -1,17 +1,17 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { BottomCTA } from "../../../../components/BottomCTA";
-import Base from "../../../../components/Create/base";
-import Garnish from "../../../../components/Create/garnish";
-import Glass from "../../../../components/Create/glass";
-import Main from "../../../../components/Create/main";
-import Naming from "../../../../components/Create/naming";
-import Sub from "../../../../components/Create/sub";
-import { CreateHeader } from "../../../../components/CreateHeader";
-import { Layout } from "../../../../components/Layout";
-import { ProgressBar } from "../../../../components/ProgressBar";
-import { Recipe } from "../../../../components/Recipe";
+import { BottomCTA } from "../BottomCTA";
+import Base from "./base";
+import Garnish from "./garnish";
+import Glass from "./glass";
+import Main from "./main";
+import Naming from "./naming";
+import Sub from "./sub";
+import { CreateHeader } from "../CreateHeader";
+import { Layout } from "../Layout";
+import { ProgressBar } from "../ProgressBar";
+import { Recipe } from "../Recipe";
 import styles from "./styles.module.scss";
 
 enum STATE {
@@ -23,8 +23,7 @@ enum STATE {
   naming,
 }
 
-const Home: NextPage = () => {
-  const router = useRouter();
+const Create = ({ gameId, back }: { gameId: string; back: Function }) => {
   const [state, setState] = useState(STATE.base);
 
   const [selectedBase, setSelectedBase] = useState<number>(-1);
@@ -51,25 +50,22 @@ const Home: NextPage = () => {
     }
     try {
       const result = await (
-        await fetch(
-          `${process.env.NEXT_PUBLIC_API_HOST}/game/${router.query.gameId}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name,
-              base: selectedBase + 1,
-              main: selectedMain,
-              sub: selectedSub,
-              garnish: selectedGarnish + 5,
-              glass: selectedGlass + 1,
-              title,
-              comment,
-            }),
-          }
-        )
+        await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/game/${gameId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            base: selectedBase + 1,
+            main: selectedMain,
+            sub: selectedSub,
+            garnish: selectedGarnish + 5,
+            glass: selectedGlass + 1,
+            title,
+            comment,
+          }),
+        })
       ).json();
 
       setIsRecipeOpen(result.result);
@@ -145,11 +141,11 @@ const Home: NextPage = () => {
             comment,
             drink: isRecipeOpen,
           }}
-          close={() => router.push(`/game/${router.query.gameId}`)}
+          close={() => back()}
         />
       )}
     </>
   );
 };
 
-export default Home;
+export default Create;
