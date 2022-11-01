@@ -22,6 +22,7 @@ export const Layout = ({
           backgroundImage: background ? `url(${background})` : "none",
         }}
       >
+        {background && <div className={styles.gradient}></div>}
         {hasHeader && (
           <header className={styles.header}>
             <button
