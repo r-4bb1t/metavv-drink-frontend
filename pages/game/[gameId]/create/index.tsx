@@ -45,6 +45,10 @@ const Home: NextPage = () => {
   };
 
   const onSubmit = async () => {
+    if (name.length === 0 || comment.length === 0 || title.length === 0) {
+      alert("1글자 이상 입력해주세요.");
+      return;
+    }
     try {
       const result = await (
         await fetch(
