@@ -33,7 +33,10 @@ const New: NextPage = () => {
   };
 
   return (
-    <Layout hasHeader>
+    <Layout
+      hasHeader
+      background={`/assets/backgrounds/background${selectedBackground + 1}.jpg`}
+    >
       <div className={styles.header}>
         <div className={styles.imagecontainer}>
           <img src={`/assets/showcases/showcase${selectedShowcase + 1}.png`} />
