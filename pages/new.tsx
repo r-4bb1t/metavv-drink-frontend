@@ -15,6 +15,10 @@ const New: NextPage = () => {
   const router = useRouter();
 
   const onSubmit = async () => {
+    if (name.length === 0) {
+      alert("이름을 1글자 이상 입력해주세요.");
+      return;
+    }
     const result = await (
       await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/new`, {
         method: "POST",
