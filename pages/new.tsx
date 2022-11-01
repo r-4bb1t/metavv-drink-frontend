@@ -34,18 +34,23 @@ const New: NextPage = () => {
 
   return (
     <Layout hasHeader>
-      <div className={styles.nameContainer}>
-        <input
-          className={styles.nameBox}
-          type="text"
-          placeholder="이름 입력"
-          autoFocus
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        ></input>
-        <div className={styles.pencil}></div>
-        <div className={styles.showcaseHeader}>showcase</div>
+      <div className={styles.header}>
+        <div className={styles.imagecontainer}>
+          <img src={`/assets/showcases/showcase${selectedShowcase + 1}.png`} />
+        </div>
+        <div className={styles.titlecontainer}>
+          <div className={styles.pencil}></div>
+          <input
+            className={styles.title}
+            type="text"
+            placeholder="이름 입력"
+            autoFocus
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></input>
+          <div className={styles.subtitle}>showcase</div>
+        </div>
       </div>
       <section>
         <p>배경선택</p>

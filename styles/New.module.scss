@@ -30,13 +30,31 @@ $primary: #731e96;
 .form p {
   margin: 0 0 0.5rem 0;
 }
-.nameContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 8px;
+
+.header {
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.imagecontainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 170px 20px #ad00ff88;
+  }
+  img {
+    position: absolute;
+    width: 220px;
+    bottom: -30px;
+  }
 }
 
 // 보일 때 안 보일때 구분!
@@ -59,28 +77,58 @@ $primary: #731e96;
   }
 }
 
-//이름 글자 스타일!
-.nameBox {
-  padding: 2px 8px;
-  border-radius: 8px;
-  background: none;
-  width: 228px;
-  height: 42px;
-  color: none;
-  border: none;
-  text-align: center;
-  text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: 5px;
+.titlecontainer {
+  position: absolute;
+  bottom: -22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
 
-  &:focus {
-    background: #3b373a;
-    opacity: 0.8;
-    & + .pencil {
-      display: none;
-    }
+@mixin text-stroke($fill-color, $stroke-color, $stroke-width, $add) {
+  color: $fill-color;
+  text-shadow: -$stroke-width -$stroke-width 0 $stroke-color,
+    $stroke-width -$stroke-width 0 $stroke-color,
+    -$stroke-width $stroke-width 0 $stroke-color,
+    $stroke-width $stroke-width 0 $stroke-color, $add;
+
+  @supports (
+      (-webkit-text-stroke-color: $stroke-color) and
+        (-webkit-text-fill-color: white)
+    )
+    or
+    ((-moz-text-stroke-color: $stroke-color) and (-moz-text-fill-color: white)) {
+    color: unset;
+    text-shadow: $add;
+    -moz-text-fill-color: $fill-color;
+    -webkit-text-fill-color: $fill-color;
+    -moz-text-stroke-color: $stroke-color;
+    -webkit-text-stroke-color: $stroke-color;
+    -moz-text-stroke-width: $stroke-width;
+    -webkit-text-stroke-width: $stroke-width;
   }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: "NanumSquareRound";
+  background: none;
+  text-align: center;
+  border: none;
+  outline: none;
+  &::placeholder {
+    opacity: 0.5;
+  }
+  @include text-stroke(transparent, #fff, 1px, 0 0 8px #c110ff);
+}
+
+.subtitle {
+  text-shadow: 0 0 8px #c110ff;
+  font-family: "NanumSquareRound";
+  font-size: 15px;
+  letter-spacing: 7px;
 }
 
 .showcaseHeader {
