@@ -14,9 +14,14 @@
   max-width: 450px;
   background-color: #181417;
   height: 100vh;
-  background-repeat: repeat;
-  background-blend-mode: overlay;
   overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  opacity: 0.1;
 }
 
 .gradient {

@@ -16,12 +16,13 @@ export const Layout = ({
   const router = useRouter();
   return (
     <div className={styles.container}>
-      <main
-        className={`${styles.main} ${hasHeader && styles.header_main}`}
-        style={{
-          backgroundImage: background ? `url(${background})` : "none",
-        }}
-      >
+      <main className={`${styles.main} ${hasHeader && styles.header_main}`}>
+        <div
+          className={styles.bg}
+          style={{
+            backgroundImage: background ? `url(${background})` : "none",
+          }}
+        ></div>
         {background && <div className={styles.gradient}></div>}
         {hasHeader && (
           <header className={styles.header}>
