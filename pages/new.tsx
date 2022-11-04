@@ -51,6 +51,7 @@ const New: NextPage = () => {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
+            maxLength={10}
           ></input>
           <div className={styles.subtitle}>showcase</div>
         </div>
