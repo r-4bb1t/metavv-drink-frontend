@@ -35,7 +35,7 @@ export const Cocktail = ({
             garnish={cocktail.garnish}
           />
         )}
-        <div>{cocktail.title}</div>
+        <div className={styles.text}>{cocktail.title}</div>
       </div>
     </>
   );

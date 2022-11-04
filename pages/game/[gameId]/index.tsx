@@ -74,7 +74,7 @@ const Main: NextPage = () => {
       />
     );
   } else {
-    return <Showcase data={data} setState={setState} />;
+    return <Showcase setState={setState} />;
   }
 };
 

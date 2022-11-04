@@ -4,12 +4,16 @@
   justify-content: flex-end;
   align-items: center;
   padding-top: 1rem;
-
-  div {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 5px 0;
-    white-space: nowrap;
+  svg {
+    height: 100%;
   }
+}
+
+.text {
+  width: 100% !important;
+  text-align: center;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

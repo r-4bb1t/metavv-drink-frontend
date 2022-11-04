@@ -6,21 +6,48 @@ import { Pagination } from "swiper";
 import { BottomCTA } from "../BottomCTA";
 import { CocktailInfo, GameInfo } from "../../constants/types";
 import { useRouter } from "next/router";
-import { Dispatch, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { STATE } from "../../pages/game/[gameId]";
 import styles from "./styles.module.scss";
 
 export const Showcase = ({
-  data,
   setState,
 }: {
-  data: GameInfo | undefined;
   setState: Dispatch<SetStateAction<STATE>>;
 }) => {
   const [selectedCocktail, setSelectedCocktail] = useState<CocktailInfo | null>(
     null
   );
   const router = useRouter();
+
+  const [data, setData] = useState<GameInfo>();
+
+  const fetchData = useCallback(async () => {
+    try {
+      const result = await (
+        await fetch(
+          `${process.env.NEXT_PUBLIC_API_HOST}/${router.query.gameId}`
+        )
+      ).json();
+
+      setData(result);
+    } catch (e) {
+      console.log(e);
+    }
+  }, [router.query.gameId]);
+
+  useEffect(() => {
+    if (router.query.gameId) {
+      fetchData();
+    }
+  }, [fetchData, router]);
+
   return (
     <Layout
       hasHeader
