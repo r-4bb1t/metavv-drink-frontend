@@ -12,12 +12,14 @@ import styles from "./styles.module.scss";
 export const Recipe = ({
   cocktail,
   close,
+  noModal = false,
 }: {
   cocktail: CocktailInfo;
   close: () => void;
+  noModal?: boolean;
 }) => {
   return (
-    <div className={styles.recipecontainer}>
+    <div className={!noModal ? styles.recipecontainer : ""}>
       <div className={styles.recipe}>
         <div className={styles.backspace} onClick={() => close()}>
           <svg

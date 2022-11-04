@@ -4,3 +4,25 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+$primary: #731e96;
+
+.button {
+  width: 100%;
+  border-radius: 9999px;
+  background-color: $primary;
+  height: 50px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: none;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.secondarybutton {
+  background-color: #d3d3d1;
+  color: $primary;
+  margin: 0;
+}

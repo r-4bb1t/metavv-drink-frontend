@@ -1,29 +1,25 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
-import { BottomCTA } from "../../../components/BottomCTA";
 import { Layout } from "../../../components/Layout";
-import styles from "./styles.module.scss";
+import styles from "../../../styles/Main.module.scss";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Cocktail } from "../../../components/Cocktail";
-import { CocktailInfo, GameInfo } from "../../../constants/types";
-import { Recipe } from "../../../components/Recipe";
+import { GameInfo } from "../../../constants/types";
 import Create from "../../../components/Create";
+import { Showcase } from "../../../components/Showcase";
+import common from "../../../styles/Common.module.scss";
+import Link from "next/link";
 
-enum STATE {
+export enum STATE {
   start,
   create,
+  result,
 }
 
 const Main: NextPage = () => {
   const router = useRouter();
   const [data, setData] = useState<GameInfo>();
-  const [selectedCocktail, setSelectedCocktail] = useState<CocktailInfo | null>(
-    null
-  );
   const [state, setState] = useState(STATE.start);
 
   const fetchData = useCallback(async () => {
@@ -46,73 +42,40 @@ const Main: NextPage = () => {
     }
   }, [fetchData, router]);
 
-  return state === STATE.start ? (
-    <Layout
-      hasHeader
-      background={`/assets/backgrounds/background${data?.background || 1}.jpg`}
-      back={() => router.push("/")}
-    >
-      <div className={styles.main}>
-        <div className={styles.header}>
-          <div className={styles.imagecontainer}>
-            <img src={`/assets/showcases/showcase${data?.showcase || 1}.png`} />
-          </div>
-          <div className={styles.titlecontainer}>
-            <div className={styles.title}>{data?.name}</div>
-            <div className={styles.subtitle}>showcase</div>
-          </div>
-        </div>
-        <Swiper
-          slidesPerView={1}
-          direction="horizontal"
-          modules={[Pagination]}
-          pagination={{
-            clickable: false,
-            renderBullet: (index, className) =>
-              '<span class="' + className + '"></span>',
-          }}
-        >
-          {[...Array(Math.ceil((data?.result.length || 1) / 9))].map((_, i) => (
-            <SwiperSlide key={i}>
-              <div className={styles.grid}>
-                {[...Array(3)].map((_, ii) => (
-                  <div className={styles.row} key={ii}>
-                    {data?.result
-                      .slice(i * 9 + ii * 3, i * 9 + ii * 3 + 3)
-                      .map((cocktail, iii) => (
-                        <Cocktail
-                          key={iii}
-                          cocktail={cocktail}
-                          setSelectedCocktail={setSelectedCocktail}
-                        />
-                      ))}
-                  </div>
-                ))}
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <BottomCTA
-          onClick={() => {
-            setState(STATE.create);
-          }}
-        >
-          제조 시작!
-        </BottomCTA>
-      </div>
-      {selectedCocktail !== null && (
-        <Recipe
-          cocktail={selectedCocktail}
-          close={() => setSelectedCocktail(null)}
+  if (state === STATE.start)
+    return (
+      <Layout>
+        <div className={styles.header}>⚜️ 진열 커스텀</div>
+        <img
+          src="/assets/thumbnail.png"
+          alt="thumbnail"
+          className={common.square}
         />
-      )}
-    </Layout>
-  ) : (
-    <Create
-      gameId={router.query.gameId as string}
-      back={() => setState(STATE.start)}
-    />
-  );
+        <div className={styles.title}>{data?.name}의 우정주 만들기</div>
+        <div className={styles.contents}>
+          친구들이 제조해 주는 우정을 담은 술.
+          <br />
+          친구들과 꾸며가는 나만의 쇼케이스를 제작해보세요!
+        </div>
+        <button
+          className={common.button}
+          onClick={() => setState(STATE.create)}
+        >
+          우정주 제조하러 가기
+        </button>
+      </Layout>
+    );
+  else if (state === STATE.create) {
+    return (
+      <Create
+        gameId={router.query.gameId as string}
+        back={() => setState(STATE.start)}
+        goToResult={() => setState(STATE.result)}
+      />
+    );
+  } else {
+    return <Showcase data={data} setState={setState} />;
+  }
 };
 
 export default Main;

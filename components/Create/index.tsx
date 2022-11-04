@@ -23,8 +23,17 @@ enum STATE {
   naming,
 }
 
-const Create = ({ gameId, back }: { gameId: string; back: Function }) => {
+const Create = ({
+  gameId,
+  back,
+  goToResult,
+}: {
+  gameId: string;
+  back: Function;
+  goToResult: Function;
+}) => {
   const [state, setState] = useState(STATE.base);
+  const router = useRouter();
 
   const [selectedBase, setSelectedBase] = useState<number>(-1);
   const [selectedMain, setSelectedMain] = useState<number[]>([]);
@@ -125,24 +134,39 @@ const Create = ({ gameId, back }: { gameId: string; back: Function }) => {
 
   return (
     <>
-      <Layout hasHeader back={prev}>
-        {Components[state]}
-      </Layout>
-      {isRecipeOpen !== -1 && (
-        <Recipe
-          cocktail={{
-            name,
-            base: selectedBase + 1,
-            main: selectedMain.map((m) => m + 1),
-            sub: selectedSub.map((b) => b + 1),
-            garnish: (selectedGarnish + 4) as 4 | 5 | 6 | 7 | 8,
-            glass: selectedGlass + 1,
-            title,
-            comment,
-            drink: isRecipeOpen,
-          }}
-          close={() => back()}
-        />
+      {isRecipeOpen === -1 ? (
+        <Layout hasHeader back={prev}>
+          {Components[state]}
+        </Layout>
+      ) : (
+        <Layout hasHeader back={prev}>
+          <Recipe
+            cocktail={{
+              name,
+              base: selectedBase + 1,
+              main: selectedMain.map((m) => m + 1),
+              sub: selectedSub.map((b) => b + 1),
+              garnish: (selectedGarnish + 4) as 4 | 5 | 6 | 7 | 8,
+              glass: selectedGlass + 1,
+              title,
+              comment,
+              drink: isRecipeOpen,
+            }}
+            noModal
+            close={() => back()}
+          />
+          <div>
+            <button className={styles.button} onClick={() => router.push("/")}>
+              나도 쇼케이스 만들기
+            </button>
+            <button
+              className={`${styles.button} ${styles.secondarybutton}`}
+              onClick={() => goToResult()}
+            >
+              친구 쇼케이스 확인하기
+            </button>
+          </div>
+        </Layout>
       )}
     </>
   );
