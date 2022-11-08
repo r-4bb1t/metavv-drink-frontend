@@ -5,7 +5,7 @@ export interface CocktailInfo {
   base: number;
   main: number[];
   sub: number[];
-  garnish: 4 | 5 | 6 | 7 | 8;
+  garnish: number;
   glass: number;
   title: string;
   comment: string;
