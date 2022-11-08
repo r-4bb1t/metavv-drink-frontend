@@ -146,7 +146,7 @@ const Create = ({
               base: selectedBase + 1,
               main: selectedMain.map((m) => m + 1),
               sub: selectedSub.map((b) => b + 1),
-              garnish: (selectedGarnish + 4) as 4 | 5 | 6 | 7 | 8,
+              garnish: (selectedGarnish + 4) as 5 | 6 | 7 | 8 | 9,
               glass: selectedGlass + 1,
               title,
               comment,
