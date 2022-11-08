@@ -1,17 +1,15 @@
 import type { NextPage } from "next";
-import Link from "next/link";
-import common from "../styles/Common.module.scss";
 import { Layout } from "../components/Layout";
 import { SelectBackground } from "../components/SelectBackground";
 import styles from "../styles/New.module.scss";
 import { SelectShowcase } from "../components/SelectShowcase";
-import { useLayoutEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 const New: NextPage = () => {
   const [name, setName] = useState("");
   const [selectedBackground, setSelectedBackground] = useState(0);
   const [selectedShowcase, setSelectedShowcase] = useState(0);
-  
+
   const router = useRouter();
 
   const onSubmit = async () => {
@@ -40,7 +38,9 @@ const New: NextPage = () => {
       <div className={styles.form}>
         <div className={styles.header}>
           <div className={styles.imagecontainer}>
-            <img src={`/assets/showcases/showcase${selectedShowcase + 1}.png`} />
+            <img
+              src={`/assets/showcases/showcase${selectedShowcase + 1}.png`}
+            />
           </div>
           <div className={styles.titlecontainer}>
             <button className={styles.pencil}></button>
