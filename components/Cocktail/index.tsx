@@ -20,19 +20,19 @@ export const Cocktail = ({
         {cocktail.glass === 1 && (
           <A
             gradient={Math.floor(cocktail.drink / 10) as 12 | 13 | 2 | 3}
-            garnish={cocktail.garnish}
+            garnish={cocktail.garnish - 1}
           />
         )}
         {cocktail.glass === 2 && (
           <B
             gradient={Math.floor(cocktail.drink / 10) as 12 | 13 | 2 | 3}
-            garnish={cocktail.garnish}
+            garnish={cocktail.garnish - 1}
           />
         )}
         {cocktail.glass === 3 && (
           <C
             gradient={Math.floor(cocktail.drink / 10) as 12 | 13 | 2 | 3}
-            garnish={cocktail.garnish}
+            garnish={cocktail.garnish - 1}
           />
         )}
         <div className={styles.text}>{cocktail.title}</div>

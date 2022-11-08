@@ -104,7 +104,10 @@ export const Showcase = ({
       </div>
       {selectedCocktail !== null && (
         <Recipe
-          cocktail={selectedCocktail}
+          cocktail={{
+            ...selectedCocktail,
+            garnish: selectedCocktail.garnish - 1,
+          }}
           close={() => setSelectedCocktail(null)}
         />
       )}

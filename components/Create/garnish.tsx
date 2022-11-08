@@ -32,7 +32,7 @@ const Garnish = ({
       label={garnish.name}
       description={garnish.description}
       value={garnish.name}
-      onChange={() => setSelectedGarnish(i)}
+      onChange={() => setSelectedGarnish(i + 1)}
     />
   ));
 

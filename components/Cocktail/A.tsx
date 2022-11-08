@@ -6,7 +6,7 @@ export const A = ({
   color = "white",
 }: {
   gradient: keyof typeof Gradient;
-  garnish: 5 | 6 | 7 | 8 | 9;
+  garnish: number;
   color?: "black" | "white";
 }) => {
   return (
