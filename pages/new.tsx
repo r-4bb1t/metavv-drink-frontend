@@ -5,13 +5,13 @@ import { Layout } from "../components/Layout";
 import { SelectBackground } from "../components/SelectBackground";
 import styles from "../styles/New.module.scss";
 import { SelectShowcase } from "../components/SelectShowcase";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useRouter } from "next/router";
 const New: NextPage = () => {
   const [name, setName] = useState("");
   const [selectedBackground, setSelectedBackground] = useState(0);
   const [selectedShowcase, setSelectedShowcase] = useState(0);
-
+  
   const router = useRouter();
 
   const onSubmit = async () => {
@@ -37,50 +37,52 @@ const New: NextPage = () => {
       hasHeader
       background={`/assets/backgrounds/background${selectedBackground + 1}.jpg`}
     >
-      <div className={styles.header}>
-        <div className={styles.imagecontainer}>
-          <img src={`/assets/showcases/showcase${selectedShowcase + 1}.png`} />
+      <div className={styles.form}>
+        <div className={styles.header}>
+          <div className={styles.imagecontainer}>
+            <img src={`/assets/showcases/showcase${selectedShowcase + 1}.png`} />
+          </div>
+          <div className={styles.titlecontainer}>
+            <button className={styles.pencil}></button>
+            <input
+              className={styles.title}
+              type="text"
+              placeholder="이름 입력"
+              autoFocus
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              maxLength={10}
+            ></input>
+            <div className={styles.subtitle}>showcase</div>
+          </div>
         </div>
-        <div className={styles.titlecontainer}>
-          <div className={styles.pencil}></div>
-          <input
-            className={styles.title}
-            type="text"
-            placeholder="이름 입력"
-            autoFocus
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            maxLength={10}
-          ></input>
-          <div className={styles.subtitle}>showcase</div>
-        </div>
+        <section>
+          <p>배경선택</p>
+          <div className={styles.container_slider}>
+            <SelectBackground
+              selectedBackground={selectedBackground}
+              setSelectedBackground={setSelectedBackground}
+            />
+          </div>
+        </section>
+        <section>
+          <p>쇼케이스 선택</p>
+          <div className={styles.container_slider}>
+            <SelectShowcase
+              selectedShowcase={selectedShowcase}
+              setSelectedShowcase={setSelectedShowcase}
+            />
+          </div>
+        </section>
+        <button
+          className={styles.button}
+          onClick={() => onSubmit()}
+          disabled={name.length === 0}
+        >
+          제작 완료!
+        </button>
       </div>
-      <section>
-        <p>배경선택</p>
-        <div className={styles.container_slider}>
-          <SelectBackground
-            selectedBackground={selectedBackground}
-            setSelectedBackground={setSelectedBackground}
-          />
-        </div>
-      </section>
-      <section>
-        <p>쇼케이스 선택</p>
-        <div className={styles.container_slider}>
-          <SelectShowcase
-            selectedShowcase={selectedShowcase}
-            setSelectedShowcase={setSelectedShowcase}
-          />
-        </div>
-      </section>
-      <button
-        className={styles.button}
-        onClick={() => onSubmit()}
-        disabled={name.length === 0}
-      >
-        제작 완료!
-      </button>
     </Layout>
   );
 };

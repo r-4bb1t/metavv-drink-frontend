@@ -21,12 +21,12 @@ $primary: #731e96;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-}
+
+}  
 .form section {
   margin-top: 15px;
   margin-bottom: 15px;
-}
+} 
 .form p {
   margin: 0 0 0.5rem 0;
 }
@@ -35,7 +35,7 @@ $primary: #731e96;
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin: 50px 0px;
 }
 
 .imagecontainer {
@@ -66,7 +66,6 @@ $primary: #731e96;
   right: 25%;
   border-radius: 9999px;
   background-color: $primary;
-  display: hidden;
   border: none;
   background-image: url("data:image/svg+xml, %3Csvg width='100%' height='100%' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1.66667 13.5417H2.83333L10.0208 6.35417L8.85417 5.1875L1.66667 12.375V13.5417ZM13.5833 5.14583L10.0417 1.64583L11.2083 0.479167C11.5278 0.159722 11.9203 0 12.3858 0C12.8508 0 13.2431 0.159722 13.5625 0.479167L14.7292 1.64583C15.0486 1.96528 15.2153 2.35083 15.2292 2.8025C15.2431 3.25361 15.0903 3.63889 14.7708 3.95833L13.5833 5.14583ZM12.375 6.375L3.54167 15.2083H0V11.6667L8.83333 2.83333L12.375 6.375Z' fill='white'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
