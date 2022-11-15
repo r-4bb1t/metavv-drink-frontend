@@ -99,7 +99,7 @@ export const Showcase = ({
             setState(STATE.create);
           }}
         >
-          제조 시작!
+          만들기 시작!
         </BottomCTA>
       </div>
       {selectedCocktail !== null && (

@@ -126,7 +126,7 @@ export const Recipe = ({
           </tbody>
           <thead>
             <tr>
-              <th colSpan={2}>제조자</th>
+              <th colSpan={2}>만든 사람</th>
             </tr>
           </thead>
           <tbody>

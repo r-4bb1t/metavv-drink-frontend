@@ -80,7 +80,7 @@ const New: NextPage = () => {
           onClick={() => onSubmit()}
           disabled={name.length === 0}
         >
-          제작 완료!
+          만들기 완료!
         </button>
       </div>
     </Layout>

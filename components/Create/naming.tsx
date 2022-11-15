@@ -24,7 +24,7 @@ const Naming = ({
     <>
       <ProgressBar page={"naming"} />
       <div className={styles.ul}>
-        <div>내가 제조한 우정주의 이름!</div>
+        <div>내가 만든 우정주의 이름!</div>
         <input
           placeholder="입력해주세요."
           value={title}
@@ -46,7 +46,7 @@ const Naming = ({
           maxLength={15}
         />
       </div>
-      <BottomCTA onClick={() => onSubmit()}>제작 완료!</BottomCTA>
+      <BottomCTA onClick={() => onSubmit()}>만들기 완료!</BottomCTA>
     </>
   );
 };

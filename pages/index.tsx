@@ -17,13 +17,13 @@ const Home: NextPage = () => {
       />
       <div className={styles.title}>우정주 만들기</div>
       <div className={styles.contents}>
-        친구들이 제조해 주는 우정을 담은 술.
+        친구들이 본 나의 첫인상, 현인상은?
         <br />
-        친구들과 꾸며가는 나만의 쇼케이스를 제작해보세요!
+        친구들이 만들어준 나를 닮은 술을 나만의 쇼케이스에 저장해봐요!
       </div>
       <Link href="/new">
         <a>
-          <button className={common.button}>시작!</button>
+          <button className={common.button}>쇼케이스 만들기</button>
         </a>
       </Link>
     </Layout>

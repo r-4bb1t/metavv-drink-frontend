@@ -53,15 +53,13 @@ const Main: NextPage = () => {
         />
         <div className={styles.title}>{data?.name}의 우정주 만들기</div>
         <div className={styles.contents}>
-          친구들이 제조해 주는 우정을 담은 술.
-          <br />
-          친구들과 꾸며가는 나만의 쇼케이스를 제작해보세요!
+          친구와 닮은 우정주를 만들어주세요!
         </div>
         <button
           className={common.button}
           onClick={() => setState(STATE.create)}
         >
-          우정주 제조하러 가기
+          우정주 만들러가기
         </button>
       </Layout>
     );
