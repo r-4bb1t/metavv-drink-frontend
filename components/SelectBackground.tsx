@@ -15,7 +15,7 @@ export const SelectBackground = ({
   return (
     <Swiper
       direction="horizontal"
-      slidesPerView={2}
+      slidesPerView={3}
       spaceBetween={0}
       style={{ padding: "20px 0", overflow: "visible" }}
       modules={[FreeMode]}
